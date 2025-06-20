@@ -1,0 +1,2 @@
+Manipulator/my_xarm_lite6/my_demo:Manipulator/my_xarm_lite6/my_lite6_bringup:Manipulator/my_xarm_lite6/my_lite6_description:Manipulator/my_xarm_lite6/my_lite6_moveit_config:Manipulator/robot_arm_pkg:transportband/transportband
+-DCATKIN_DEVEL_PREFIX=/home/student/Git-projects/robot-project/rossem_ws/devel -DCMAKE_INSTALL_PREFIX=/home/student/Git-projects/robot-project/rossem_ws/install -G Unix Makefiles

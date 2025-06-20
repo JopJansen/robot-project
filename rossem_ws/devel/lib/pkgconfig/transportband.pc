@@ -1,0 +1,8 @@
+prefix=/home/student/Git-projects/robot-project/rossem_ws/devel
+
+Name: transportband
+Description: Description of transportband
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

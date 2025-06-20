@@ -1,0 +1,14 @@
+<package format="2">
+  <name>transportband</name>
+  <version>0.0.1</version>
+  <description>Arduino communicatie voor transportband</description>
+
+  <maintainer email="jou@email.nl">Jouw Naam</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>rosserial_python</depend>
+</package>
+
