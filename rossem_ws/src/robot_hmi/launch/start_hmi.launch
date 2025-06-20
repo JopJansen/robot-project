@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="robot_hmi" type="robot_sim.py" name="robot_sim" output="screen" />
+    <node pkg="robot_hmi" type="hmi_node.py" name="hmi_node" output="screen" />
+</launch>
+
