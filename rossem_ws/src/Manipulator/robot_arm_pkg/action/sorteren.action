@@ -1,0 +1,11 @@
+# Goal
+string doel_positie
+
+---
+# Result
+bool success
+
+---
+# Feedback
+string status
+
