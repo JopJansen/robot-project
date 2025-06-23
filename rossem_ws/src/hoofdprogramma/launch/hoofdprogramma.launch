@@ -1,0 +1,11 @@
+<launch>
+  <!-- Include launchfile voor rosserial en transportband -->
+  <include file="$(find transportband)/launch/transportband.launch" />
+
+  <!-- Include launchfile voor HMI (robot_sim en hmi_node) -->
+  <include file="$(find robot_hmi)/launch/start_hmi.launch" />
+
+  <!-- Start hoofdprogramma node -->
+  <node pkg="hoofdprogramma" type="hoofdprogramma.py" name="hoofdprogramma" output="screen" />
+</launch>
+
