@@ -135,6 +135,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_bringup/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_moveit_config/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/robot_arm_pkg/cmake_install.cmake")
+  include("/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_description/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/transportband/transportband/cmake_install.cmake")
 

@@ -420,6 +420,12 @@ robot_arm_pkg_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_
 //Value Computed by CMake
 robot_arm_pkg_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/robot_arm_pkg
 
+//Value Computed by CMake
+robot_hmi_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi
+
+//Value Computed by CMake
+robot_hmi_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/robot_hmi
+
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
 
@@ -644,7 +650,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=10
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

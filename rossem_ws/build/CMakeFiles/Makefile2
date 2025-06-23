@@ -1976,6 +1976,24 @@ clean: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gencpp.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory robot_hmi
+
+# Convenience name for "all" pass in the directory.
+robot_hmi/all:
+
+.PHONY : robot_hmi/all
+
+# Convenience name for "clean" pass in the directory.
+robot_hmi/clean:
+
+.PHONY : robot_hmi/clean
+
+# Convenience name for "preinstall" pass in the directory.
+robot_hmi/preinstall:
+
+.PHONY : robot_hmi/preinstall
+
+#=============================================================================
 # Directory level rules for directory Manipulator/my_xarm_lite6/my_lite6_description
 
 # Convenience name for "all" pass in the directory.

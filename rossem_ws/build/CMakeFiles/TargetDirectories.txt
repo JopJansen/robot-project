@@ -107,6 +107,13 @@
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenActionResult.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gencpp.dir
+/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi/CMakeFiles/install/strip.dir
+/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi/CMakeFiles/edit_cache.dir
+/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi/CMakeFiles/list_install_components.dir
+/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi/CMakeFiles/test.dir
+/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi/CMakeFiles/install/local.dir
+/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi/CMakeFiles/rebuild_cache.dir
+/home/student/Git-projects/robot-project/rossem_ws/build/robot_hmi/CMakeFiles/install.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_description/CMakeFiles/install/strip.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_description/CMakeFiles/edit_cache.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_description/CMakeFiles/list_install_components.dir
