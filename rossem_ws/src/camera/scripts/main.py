@@ -1,3 +1,27 @@
+#!/usr/bin/env python3
+
+import rospy
+from std_msgs.msg import String
+from geometry_msgs.msg import PoseStamped
+
+import argparse
+import os.path
+import json
+import cv2
+import depthai as dai
+import time
+
+start_detection = False
+
+def arduino_callback(msg):
+    global start_detection
+    if "motor" in msg.data.lower():
+        print('jippie')
+        rospy.loginfo("Startsignaal ontvangen van Arduino: Sensor 2 heeft gedetecteerd.")
+        start_detection = True
+    else: 
+        print('stront aan de knikker')
+
 def main():
     global start_detection
 
@@ -8,14 +32,77 @@ def main():
     blob_filename = args.b
     json_filename = args.j
 
-    if (not os.path.isfile(blob_filename)) or (not os.path.isfile(json_filename)):
+    if not os.path.isfile(blob_filename) or not os.path.isfile(json_filename):
         rospy.logerr('Error: Bestanden niet gevonden')
         return
 
     with open(json_filename) as f:
         jsonData = json.load(f)
 
-    # ... (alle instellingen en pipeline zoals in jouw code) ...
+    numClasses = jsonData["nn_config"]["NN_specific_metadata"]["classes"]
+    labelMap = jsonData["mappings"]["labels"]
+    anchors = jsonData["nn_config"]["NN_specific_metadata"]["anchors"]
+    anchorMasks = jsonData["nn_config"]["NN_specific_metadata"]["anchor_masks"]
+    coordinateSize = jsonData["nn_config"]["NN_specific_metadata"]["coordinates"]
+    iouThreshold = jsonData["nn_config"]["NN_specific_metadata"]["iou_threshold"]
+    confidenceThreshold = jsonData["nn_config"]["NN_specific_metadata"]["confidence_threshold"]
+    inputSizeX, inputSizeY = map(int, jsonData["nn_config"]["input_size"].split("x"))
+
+    syncNN = True
+
+    pipeline = dai.Pipeline()
+
+    camRgb = pipeline.create(dai.node.ColorCamera)
+    spatialDetectionNetwork = pipeline.create(dai.node.YoloSpatialDetectionNetwork)
+    monoLeft = pipeline.create(dai.node.MonoCamera)
+    monoRight = pipeline.create(dai.node.MonoCamera)
+    stereo = pipeline.create(dai.node.StereoDepth)
+
+    xoutRgb = pipeline.create(dai.node.XLinkOut)
+    xoutNN = pipeline.create(dai.node.XLinkOut)
+    xoutDepth = pipeline.create(dai.node.XLinkOut)
+
+    xoutRgb.setStreamName("rgb")
+    xoutNN.setStreamName("detections")
+    xoutDepth.setStreamName("depth")
+
+    camRgb.setPreviewSize(inputSizeX, inputSizeY)
+    camRgb.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
+    camRgb.setInterleaved(False)
+    camRgb.setColorOrder(dai.ColorCameraProperties.ColorOrder.BGR)
+
+    monoLeft.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+    monoLeft.setBoardSocket(dai.CameraBoardSocket.LEFT)
+    monoRight.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+    monoRight.setBoardSocket(dai.CameraBoardSocket.RIGHT)
+
+    stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
+    stereo.setDepthAlign(dai.CameraBoardSocket.RGB)
+    stereo.setOutputSize(monoLeft.getResolutionWidth(), monoLeft.getResolutionHeight())
+
+    spatialDetectionNetwork.setBlobPath(blob_filename)
+    spatialDetectionNetwork.setConfidenceThreshold(confidenceThreshold)
+    spatialDetectionNetwork.input.setBlocking(False)
+    spatialDetectionNetwork.setBoundingBoxScaleFactor(0.5)
+    spatialDetectionNetwork.setDepthLowerThreshold(100)
+    spatialDetectionNetwork.setDepthUpperThreshold(5000)
+    spatialDetectionNetwork.setNumClasses(numClasses)
+    spatialDetectionNetwork.setCoordinateSize(coordinateSize)
+    spatialDetectionNetwork.setAnchors(anchors)
+    spatialDetectionNetwork.setAnchorMasks(anchorMasks)
+    spatialDetectionNetwork.setIouThreshold(iouThreshold)
+
+    monoLeft.out.link(stereo.left)
+    monoRight.out.link(stereo.right)
+    camRgb.preview.link(spatialDetectionNetwork.input)
+    spatialDetectionNetwork.out.link(xoutNN.input)
+    stereo.depth.link(spatialDetectionNetwork.inputDepth)
+
+    if syncNN:
+        spatialDetectionNetwork.passthrough.link(xoutRgb.input)
+        spatialDetectionNetwork.passthroughDepth.link(xoutDepth.input)
+    else:
+        camRgb.preview.link(xoutRgb.input)
 
     rospy.init_node('camera_detection_node', anonymous=True)
 
@@ -25,7 +112,7 @@ def main():
 
     rospy.Subscriber('/arduino/output', String, arduino_callback)
 
-    rospy.loginfo("Wacht op signaal van Arduino (sensor 2)...")
+    rospy.loginfo("Wacht op start van Arduino...")
     rate = rospy.Rate(10)
 
     try:
@@ -43,7 +130,7 @@ def main():
                     fps = 0
                     color = (255, 255, 255)
                     last_detection_time = time.time()
-                    timeout_duration = 15
+                    timeout_duration = 15  # seconden
 
                     while not rospy.is_shutdown() and start_detection:
                         inPreview = previewQueue.tryGet()
@@ -111,3 +198,7 @@ def main():
     except Exception as e:
         rospy.logerr(f"Camera-error: {e}")
         error_pub.publish("camera_error")
+
+
+if __name__ == "__main__":
+    main()
