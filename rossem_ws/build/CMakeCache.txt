@@ -296,17 +296,59 @@ camera_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/buil
 //Value Computed by CMake
 camera_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/camera
 
+//Value Computed by CMake
+camera_demo_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_vision/camera_demo
+
+//Value Computed by CMake
+camera_demo_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_vision/camera_demo
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
 
+//The directory containing a CMake configuration file for class_loader.
+class_loader_DIR:PATH=/opt/ros/melodic/share/class_loader/cmake
+
+//The directory containing a CMake configuration file for combined_robot_hw.
+combined_robot_hw_DIR:PATH=/opt/ros/melodic/share/combined_robot_hw/cmake
+
+//The directory containing a CMake configuration file for control_msgs.
+control_msgs_DIR:PATH=/opt/ros/melodic/share/control_msgs/cmake
+
+//The directory containing a CMake configuration file for control_toolbox.
+control_toolbox_DIR:PATH=/opt/ros/melodic/share/control_toolbox/cmake
+
+//The directory containing a CMake configuration file for controller_interface.
+controller_interface_DIR:PATH=/opt/ros/melodic/share/controller_interface/cmake
+
+//The directory containing a CMake configuration file for controller_manager.
+controller_manager_DIR:PATH=/opt/ros/melodic/share/controller_manager/cmake
+
+//The directory containing a CMake configuration file for controller_manager_msgs.
+controller_manager_msgs_DIR:PATH=/opt/ros/melodic/share/controller_manager_msgs/cmake
+
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
+
+//Value Computed by CMake
+d435i_xarm_setup_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_vision/d435i_xarm_setup
+
+//Value Computed by CMake
+d435i_xarm_setup_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_vision/d435i_xarm_setup
 
 //Value Computed by CMake
 dual_xarm6_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/dual_xarm6_moveit_config
 
 //Value Computed by CMake
 dual_xarm6_moveit_config_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/dual_xarm6_moveit_config
+
+//The directory containing a CMake configuration file for dynamic_reconfigure.
+dynamic_reconfigure_DIR:PATH=/opt/ros/melodic/share/dynamic_reconfigure/cmake
+
+//The directory containing a CMake configuration file for eigen_conversions.
+eigen_conversions_DIR:PATH=/opt/ros/melodic/share/eigen_conversions/cmake
+
+//The directory containing a CMake configuration file for eigen_stl_containers.
+eigen_stl_containers_DIR:PATH=/opt/ros/melodic/share/eigen_stl_containers/cmake
 
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/melodic/share/gencpp/cmake
@@ -325,6 +367,12 @@ gennodejs_DIR:PATH=/opt/ros/melodic/share/gennodejs/cmake
 
 //The directory containing a CMake configuration file for genpy.
 genpy_DIR:PATH=/opt/ros/melodic/share/genpy/cmake
+
+//The directory containing a CMake configuration file for geometric_shapes.
+geometric_shapes_DIR:PATH=/opt/ros/melodic/share/geometric_shapes/cmake
+
+//The directory containing a CMake configuration file for geometry_msgs.
+geometry_msgs_DIR:PATH=/opt/ros/melodic/share/geometry_msgs/cmake
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/gtest/googlemock
@@ -346,6 +394,9 @@ googletest-distribution_BINARY_DIR:STATIC=/home/student/Git-projects/robot-proje
 
 //Value Computed by CMake
 googletest-distribution_SOURCE_DIR:STATIC=/usr/src/googletest
+
+//The directory containing a CMake configuration file for graph_msgs.
+graph_msgs_DIR:PATH=/opt/ros/melodic/share/graph_msgs/cmake
 
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/gtest/googlemock/gtest
@@ -375,14 +426,29 @@ gtest_hide_internal_symbols:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//The directory containing a CMake configuration file for hardware_interface.
+hardware_interface_DIR:PATH=/opt/ros/melodic/share/hardware_interface/cmake
+
 //Value Computed by CMake
 hoofdprogramma_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/hoofdprogramma
 
 //Value Computed by CMake
 hoofdprogramma_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/hoofdprogramma
 
+//The directory containing a CMake configuration file for joint_limits_interface.
+joint_limits_interface_DIR:PATH=/opt/ros/melodic/share/joint_limits_interface/cmake
+
+//The directory containing a CMake configuration file for joint_state_controller.
+joint_state_controller_DIR:PATH=/opt/ros/melodic/share/joint_state_controller/cmake
+
+//The directory containing a CMake configuration file for kdl_conversions.
+kdl_conversions_DIR:PATH=/opt/ros/melodic/share/kdl_conversions/cmake
+
+//The directory containing a CMake configuration file for kdl_parser.
+kdl_parser_DIR:PATH=/opt/ros/melodic/share/kdl_parser/cmake
+
 //Path to a library.
-lib:FILEPATH=/opt/ros/melodic/lib/librostime.so
+lib:FILEPATH=/opt/ros/melodic/lib/libtf2.so
 
 //Value Computed by CMake
 lite6_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/lite6_moveit_config
@@ -390,11 +456,44 @@ lite6_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/r
 //Value Computed by CMake
 lite6_moveit_config_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/lite6_moveit_config
 
+//The directory containing a CMake configuration file for message_filters.
+message_filters_DIR:PATH=/opt/ros/melodic/share/message_filters/cmake
+
 //The directory containing a CMake configuration file for message_generation.
 message_generation_DIR:PATH=/opt/ros/melodic/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
+
+//The directory containing a CMake configuration file for moveit_core.
+moveit_core_DIR:PATH=/opt/ros/melodic/share/moveit_core/cmake
+
+//The directory containing a CMake configuration file for moveit_msgs.
+moveit_msgs_DIR:PATH=/opt/ros/melodic/share/moveit_msgs/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_manipulation.
+moveit_ros_manipulation_DIR:PATH=/opt/ros/melodic/share/moveit_ros_manipulation/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_move_group.
+moveit_ros_move_group_DIR:PATH=/opt/ros/melodic/share/moveit_ros_move_group/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_occupancy_map_monitor.
+moveit_ros_occupancy_map_monitor_DIR:PATH=/opt/ros/melodic/share/moveit_ros_occupancy_map_monitor/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_planning.
+moveit_ros_planning_DIR:PATH=/opt/ros/melodic/share/moveit_ros_planning/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_planning_interface.
+moveit_ros_planning_interface_DIR:PATH=/opt/ros/melodic/share/moveit_ros_planning_interface/cmake
+
+//The directory containing a CMake configuration file for moveit_ros_warehouse.
+moveit_ros_warehouse_DIR:PATH=/opt/ros/melodic/share/moveit_ros_warehouse/cmake
+
+//The directory containing a CMake configuration file for moveit_servo.
+moveit_servo_DIR:PATH=/opt/ros/melodic/share/moveit_servo/cmake
+
+//The directory containing a CMake configuration file for moveit_visual_tools.
+moveit_visual_tools_DIR:PATH=/opt/ros/melodic/share/moveit_visual_tools/cmake
 
 //Value Computed by CMake
 multi_xarm5_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/multi_xarm5
@@ -426,6 +525,21 @@ my_lite6_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot-projec
 //Value Computed by CMake
 my_lite6_moveit_config_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/my_xarm_lite6/my_lite6_moveit_config
 
+//The directory containing a CMake configuration file for object_recognition_msgs.
+object_recognition_msgs_DIR:PATH=/opt/ros/melodic/share/object_recognition_msgs/cmake
+
+//The directory containing a CMake configuration file for octomap_msgs.
+octomap_msgs_DIR:PATH=/opt/ros/melodic/share/octomap_msgs/cmake
+
+//The directory containing a CMake configuration file for pluginlib.
+pluginlib_DIR:PATH=/opt/ros/melodic/share/pluginlib/cmake
+
+//The directory containing a CMake configuration file for random_numbers.
+random_numbers_DIR:PATH=/opt/ros/melodic/share/random_numbers/cmake
+
+//The directory containing a CMake configuration file for realtime_tools.
+realtime_tools_DIR:PATH=/opt/ros/melodic/share/realtime_tools/cmake
+
 //Value Computed by CMake
 robot_arm_pkg_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/robot_arm_pkg
 
@@ -441,6 +555,9 @@ robot_hmi_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/s
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
 
+//The directory containing a CMake configuration file for rosconsole_bridge.
+rosconsole_bridge_DIR:PATH=/opt/ros/melodic/share/rosconsole_bridge/cmake
+
 //The directory containing a CMake configuration file for roscpp.
 roscpp_DIR:PATH=/opt/ros/melodic/share/roscpp/cmake
 
@@ -450,11 +567,23 @@ roscpp_serialization_DIR:PATH=/opt/ros/melodic/share/roscpp_serialization/cmake
 //The directory containing a CMake configuration file for roscpp_traits.
 roscpp_traits_DIR:PATH=/opt/ros/melodic/share/roscpp_traits/cmake
 
+//The directory containing a CMake configuration file for rosgraph.
+rosgraph_DIR:PATH=/opt/ros/melodic/share/rosgraph/cmake
+
 //The directory containing a CMake configuration file for rosgraph_msgs.
 rosgraph_msgs_DIR:PATH=/opt/ros/melodic/share/rosgraph_msgs/cmake
 
 //The directory containing a CMake configuration file for roslaunch.
 roslaunch_DIR:PATH=/opt/ros/melodic/share/roslaunch/cmake
+
+//The directory containing a CMake configuration file for roslib.
+roslib_DIR:PATH=/opt/ros/melodic/share/roslib/cmake
+
+//The directory containing a CMake configuration file for rospack.
+rospack_DIR:PATH=/opt/ros/melodic/share/rospack/cmake
+
+//The directory containing a CMake configuration file for rosparam_shortcuts.
+rosparam_shortcuts_DIR:PATH=/opt/ros/melodic/share/rosparam_shortcuts/cmake
 
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/melodic/share/rospy/cmake
@@ -462,8 +591,56 @@ rospy_DIR:PATH=/opt/ros/melodic/share/rospy/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/melodic/share/rostime/cmake
 
+//Value Computed by CMake
+run_recorded_traj_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/run_recorded_traj
+
+//Value Computed by CMake
+run_recorded_traj_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/examples/run_recorded_traj
+
+//The directory containing a CMake configuration file for rviz_visual_tools.
+rviz_visual_tools_DIR:PATH=/opt/ros/melodic/share/rviz_visual_tools/cmake
+
+//The directory containing a CMake configuration file for sensor_msgs.
+sensor_msgs_DIR:PATH=/opt/ros/melodic/share/sensor_msgs/cmake
+
+//The directory containing a CMake configuration file for shape_msgs.
+shape_msgs_DIR:PATH=/opt/ros/melodic/share/shape_msgs/cmake
+
+//The directory containing a CMake configuration file for srdfdom.
+srdfdom_DIR:PATH=/opt/ros/melodic/share/srdfdom/cmake
+
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/melodic/share/std_msgs/cmake
+
+//The directory containing a CMake configuration file for std_srvs.
+std_srvs_DIR:PATH=/opt/ros/melodic/share/std_srvs/cmake
+
+//The directory containing a CMake configuration file for tf2.
+tf2_DIR:PATH=/opt/ros/melodic/share/tf2/cmake
+
+//The directory containing a CMake configuration file for tf2_eigen.
+tf2_eigen_DIR:PATH=/opt/ros/melodic/share/tf2_eigen/cmake
+
+//The directory containing a CMake configuration file for tf2_geometry_msgs.
+tf2_geometry_msgs_DIR:PATH=/opt/ros/melodic/share/tf2_geometry_msgs/cmake
+
+//The directory containing a CMake configuration file for tf2_msgs.
+tf2_msgs_DIR:PATH=/opt/ros/melodic/share/tf2_msgs/cmake
+
+//The directory containing a CMake configuration file for tf2_py.
+tf2_py_DIR:PATH=/opt/ros/melodic/share/tf2_py/cmake
+
+//The directory containing a CMake configuration file for tf2_ros.
+tf2_ros_DIR:PATH=/opt/ros/melodic/share/tf2_ros/cmake
+
+//The directory containing a CMake configuration file for tf.
+tf_DIR:PATH=/opt/ros/melodic/share/tf/cmake
+
+//The directory containing a CMake configuration file for tf_conversions.
+tf_conversions_DIR:PATH=/opt/ros/melodic/share/tf_conversions/cmake
+
+//The directory containing a CMake configuration file for trajectory_msgs.
+trajectory_msgs_DIR:PATH=/opt/ros/melodic/share/trajectory_msgs/cmake
 
 //Value Computed by CMake
 transportband_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/transportband/transportband
@@ -476,6 +653,15 @@ uf_robot_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot-projec
 
 //Value Computed by CMake
 uf_robot_moveit_config_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/uf_robot_moveit_config
+
+//The directory containing a CMake configuration file for urdf.
+urdf_DIR:PATH=/opt/ros/melodic/share/urdf/cmake
+
+//The directory containing a CMake configuration file for visualization_msgs.
+visualization_msgs_DIR:PATH=/opt/ros/melodic/share/visualization_msgs/cmake
+
+//The directory containing a CMake configuration file for warehouse_ros.
+warehouse_ros_DIR:PATH=/opt/ros/melodic/share/warehouse_ros/cmake
 
 //Value Computed by CMake
 xarm5_gripper_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm5_gripper_moveit_config
@@ -526,16 +712,43 @@ xarm7_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/r
 xarm7_moveit_config_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm7_moveit_config
 
 //Value Computed by CMake
+xarm7_redundancy_res_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/xarm7_redundancy_res
+
+//Value Computed by CMake
+xarm7_redundancy_res_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/examples/xarm7_redundancy_res
+
+//Value Computed by CMake
 xarm7_vacuum_gripper_moveit_config_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/xarm7_vacuum_gripper_moveit_config
 
 //Value Computed by CMake
 xarm7_vacuum_gripper_moveit_config_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/examples/xarm7_vacuum_gripper_moveit_config
 
 //Value Computed by CMake
+xarm_api_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_api
+
+//The directory containing a CMake configuration file for xarm_api.
+xarm_api_DIR:PATH=/home/student/Git-projects/robot-project/rossem_ws/devel/share/xarm_api/cmake
+
+//Value Computed by CMake
+xarm_api_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_api
+
+//Value Computed by CMake
 xarm_bringup_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_bringup
 
 //Value Computed by CMake
 xarm_bringup_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_bringup
+
+//Dependencies for the target
+xarm_combined_hw_LIB_DEPENDS:STATIC=general;xarm_hw;
+
+//Value Computed by CMake
+xarm_controller_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_controller
+
+//Value Computed by CMake
+xarm_controller_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_controller
+
+//Dependencies for target
+xarm_cxx_sdk_LIB_DEPENDS:STATIC=
 
 //Value Computed by CMake
 xarm_description_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_description
@@ -544,10 +757,58 @@ xarm_description_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/ross
 xarm_description_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_description
 
 //Value Computed by CMake
+xarm_gazebo_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_gazebo
+
+//Value Computed by CMake
+xarm_gazebo_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_gazebo
+
+//Value Computed by CMake
+xarm_gripper_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_gripper
+
+//Value Computed by CMake
+xarm_gripper_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_gripper
+
+//Dependencies for the target
+xarm_hw_LIB_DEPENDS:STATIC=general;/opt/ros/melodic/lib/libcombined_robot_hw.so;general;/opt/ros/melodic/lib/libcontroller_manager.so;general;/opt/ros/melodic/lib/libjoint_state_controller.so;general;/opt/ros/melodic/lib/libcontrol_toolbox.so;general;/opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/melodic/lib/librealtime_tools.so;general;xarm_ros_driver;general;xarm_ros_client;general;/opt/ros/melodic/lib/libactionlib.so;general;xarm_cxx_sdk;general;/opt/ros/melodic/lib/liburdf.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_model.so;general;/usr/lib/x86_64-linux-gnu/liburdfdom_world.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/melodic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/melodic/lib/libroslib.so;general;/opt/ros/melodic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/melodic/lib/librosconsole_bridge.so;general;/opt/ros/melodic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/opt/ros/melodic/lib/librosconsole.so;general;/opt/ros/melodic/lib/librosconsole_log4cxx.so;general;/opt/ros/melodic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/melodic/lib/libroscpp_serialization.so;general;/opt/ros/melodic/lib/libxmlrpcpp.so;general;/opt/ros/melodic/lib/librostime.so;general;/opt/ros/melodic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+xarm_moveit_servo_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_moveit_servo
+
+//Value Computed by CMake
+xarm_moveit_servo_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_moveit_servo
+
+//Value Computed by CMake
 xarm_msgs_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_msgs
+
+//The directory containing a CMake configuration file for xarm_msgs.
+xarm_msgs_DIR:PATH=/home/student/Git-projects/robot-project/rossem_ws/devel/share/xarm_msgs/cmake
 
 //Value Computed by CMake
 xarm_msgs_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_msgs
+
+//Value Computed by CMake
+xarm_planner_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_planner
+
+//The directory containing a CMake configuration file for xarm_planner.
+xarm_planner_DIR:PATH=/home/student/Git-projects/robot-project/rossem_ws/devel/share/xarm_planner/cmake
+
+//Value Computed by CMake
+xarm_planner_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_planner
+
+//Dependencies for target
+xarm_ros_client_LIB_DEPENDS:STATIC=
+
+//Dependencies for the target
+xarm_ros_driver_LIB_DEPENDS:STATIC=general;xarm_cxx_sdk;general;/opt/ros/melodic/lib/libactionlib.so;general;/opt/ros/melodic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/opt/ros/melodic/lib/librosconsole.so;general;/opt/ros/melodic/lib/librosconsole_log4cxx.so;general;/opt/ros/melodic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/melodic/lib/libxmlrpcpp.so;general;/opt/ros/melodic/lib/libroscpp_serialization.so;general;/opt/ros/melodic/lib/librostime.so;general;/opt/ros/melodic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4;general;xarm_cxx_sdk;
+
+//Value Computed by CMake
+xarm_sdk_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_sdk
+
+//The directory containing a CMake configuration file for xarm_sdk.
+xarm_sdk_DIR:PATH=/home/student/Git-projects/robot-project/rossem_ws/devel/share/xarm_sdk/cmake
+
+//Value Computed by CMake
+xarm_sdk_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/xarm_ros/xarm_sdk
 
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/melodic/share/xmlrpcpp/cmake
@@ -662,7 +923,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=13
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=40
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
