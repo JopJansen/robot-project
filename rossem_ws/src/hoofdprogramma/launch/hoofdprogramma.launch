@@ -6,6 +6,11 @@
   <include file="$(find robot_hmi)/launch/start_hmi.launch" />
 
   <!-- Start hoofdprogramma node -->
-  <node pkg="hoofdprogramma" type="hoofdprogramma.py" name="hoofdprogramma" output="screen" />
+<node pkg="camera"
+      type="main.py"
+      name="camera_detection_node"
+      output="screen"
+      args="-b $(find camera)/p15_openvino_2022.1_6shave.blob -j $(find camera)/p15.json"
+      launch-prefix="python3" />
 </launch>
 
