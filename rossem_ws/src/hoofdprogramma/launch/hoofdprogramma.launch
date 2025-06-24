@@ -6,8 +6,8 @@
   <include file="$(find robot_hmi)/launch/start_hmi.launch" />
 
   <!-- Argumenten voor blob en json bestanden -->
-  <arg name="blob" default="$(find camera)/p15_openvino_2022.1_6shave.blob" />
-  <arg name="json" default="$(find camera)/p15.json" />
+  <arg name="blob" default="$(find camera)/scripts/p15_openvino_2022.1_6shave.blob" />
+  <arg name="json" default="$(find camera)/scripts/p15.json" />
 
   <!-- Start camera detectie node -->
   <node pkg="camera"
