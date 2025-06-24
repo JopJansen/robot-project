@@ -369,6 +369,12 @@ gtest_hide_internal_symbols:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//Value Computed by CMake
+hoofdprogramma_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/hoofdprogramma
+
+//Value Computed by CMake
+hoofdprogramma_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/hoofdprogramma
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/melodic/lib/librostime.so
 
@@ -650,7 +656,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=12
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

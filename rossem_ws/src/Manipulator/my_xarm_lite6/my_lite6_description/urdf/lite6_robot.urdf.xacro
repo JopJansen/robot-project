@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro" name="lite6_robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lite6_robot">
 
   <!--
   <xacro:arg name="prefix" default="arm_"/>
@@ -49,6 +49,7 @@
   <xacro:arg name="mesh_suffix" default="stl"/>
 
   <xacro:arg name="kinematics_suffix" default=""/>
+  <xacro:include filename="$(find my_lite6_description)/urdf/depthai_macro.urdf.xacro" />
 
   <!-- load xarm device -->
   <xacro:include filename="$(find xarm_description)/urdf/xarm_device_macro.xacro" />
@@ -249,7 +250,7 @@
 <joint name="mountingplate_to_transportband_joint" type="fixed">
   <parent link="mountingplate_link"/>
   <child link="transportband_link"/>
-  <origin xyz="0.08 -0.15 0" rpy="1.57 0 0"/>
+  <origin xyz="0.005 -0.11 0" rpy="1.57 0 0"/>
 </joint>
 
 <!-- camera link -->
@@ -283,8 +284,9 @@
 <joint name="mountingplate_to_camera_compleet_joint" type="fixed">
   <parent link="mountingplate_link"/>
   <child link="camera_compleet_link"/>
-  <origin xyz="0.4 -0.3 0" rpy="0 0 3.14"/>
+  <origin xyz="0.19 -0.245 -0.02" rpy="0 0 3.14"/>
 </joint>
+
 
 <!-- Schroevendraaier link 
 <link name="schroevendraaier_link">
@@ -386,6 +388,21 @@
   <child link="gripper_link"/>
   <origin xyz="-0.115 -0.04 -0.05" rpy="0 0 0"/> <!-- pas aan voor juiste positie -->
 </joint>
+
+<!-- camera position -->
+<!-- DepthAI-camera toevoegen aan robot -->
+<xacro:depthai_camera 
+  camera_name="oak_camera"
+  camera_model="OAK-D"
+  parent="world"
+  base_frame="camera_link"
+  cam_pos_x="-0.14"
+  cam_pos_y="-0.26"
+  cam_pos_z="0.54"
+  cam_roll="0.0"
+  cam_pitch="1.5708"
+  cam_yaw="-1.5708"
+/>
 
 
 

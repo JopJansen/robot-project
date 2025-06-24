@@ -5,9 +5,10 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
-subdirs("Manipulator/my_xarm_lite6/my_demo")
 subdirs("Manipulator/my_xarm_lite6/my_lite6_bringup")
 subdirs("Manipulator/my_xarm_lite6/my_lite6_moveit_config")
+subdirs("Manipulator/my_xarm_lite6/my_demo")
+subdirs("hoofdprogramma")
 subdirs("Manipulator/robot_arm_pkg")
 subdirs("robot_hmi")
 subdirs("Manipulator/my_xarm_lite6/my_lite6_description")

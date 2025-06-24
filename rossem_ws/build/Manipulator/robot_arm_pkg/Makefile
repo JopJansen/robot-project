@@ -183,49 +183,34 @@ robot_arm_pkg_genpy/fast:
 .PHONY : robot_arm_pkg_genpy/fast
 
 # Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/rule
+Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-robot_arm_pkg_gennodejs: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/rule
+rosgraph_msgs_generate_messages_cpp: Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : robot_arm_pkg_gennodejs
+.PHONY : rosgraph_msgs_generate_messages_cpp
 
 # fast build rule for target.
-robot_arm_pkg_gennodejs/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/build
-.PHONY : robot_arm_pkg_gennodejs/fast
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/rule
+Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/rule
 
 # Convenience name for target.
-robot_arm_pkg_generate_messages_nodejs: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/rule
+actionlib_generate_messages_py: Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/rule
 
-.PHONY : robot_arm_pkg_generate_messages_nodejs
+.PHONY : actionlib_generate_messages_py
 
 # fast build rule for target.
-robot_arm_pkg_generate_messages_nodejs/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/build
-.PHONY : robot_arm_pkg_generate_messages_nodejs/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/rule
-
-# Convenience name for target.
-robot_arm_pkg_geneus: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/rule
-
-.PHONY : robot_arm_pkg_geneus
-
-# fast build rule for target.
-robot_arm_pkg_geneus/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/build
-.PHONY : robot_arm_pkg_geneus/fast
+actionlib_generate_messages_py/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/build
+.PHONY : actionlib_generate_messages_py/fast
 
 # Convenience name for target.
 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
@@ -256,6 +241,21 @@ robot_arm_pkg_generate_messages_eus: Manipulator/robot_arm_pkg/CMakeFiles/robot_
 robot_arm_pkg_generate_messages_eus/fast:
 	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_eus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_eus.dir/build
 .PHONY : robot_arm_pkg_generate_messages_eus/fast
+
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_lisp: Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+.PHONY : roscpp_generate_messages_lisp
+
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
 
 # Convenience name for target.
 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
@@ -316,6 +316,81 @@ rosgraph_msgs_generate_messages_lisp: Manipulator/robot_arm_pkg/CMakeFiles/rosgr
 rosgraph_msgs_generate_messages_lisp/fast:
 	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_cpp: Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_cpp/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+.PHONY : actionlib_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_nodejs: Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+
+.PHONY : roscpp_generate_messages_nodejs
+
+# fast build rule for target.
+roscpp_generate_messages_nodejs/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
+
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_eus: Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
+
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_eus: Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_eus
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_eus/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+.PHONY : actionlib_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_py: Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
 
 # Convenience name for target.
 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
@@ -393,34 +468,34 @@ rosgraph_msgs_generate_messages_py/fast:
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_eus: Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+robot_arm_pkg_geneus: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/rule
 
-.PHONY : actionlib_msgs_generate_messages_eus
+.PHONY : robot_arm_pkg_geneus
 
 # fast build rule for target.
-actionlib_msgs_generate_messages_eus/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
-.PHONY : actionlib_msgs_generate_messages_eus/fast
+robot_arm_pkg_geneus/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_geneus.dir/build
+.PHONY : robot_arm_pkg_geneus/fast
 
 # Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_cpp: Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+_robot_arm_pkg_generate_messages_check_deps_sorterenResult: Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/rule
 
-.PHONY : std_msgs_generate_messages_cpp
+.PHONY : _robot_arm_pkg_generate_messages_check_deps_sorterenResult
 
 # fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
+_robot_arm_pkg_generate_messages_check_deps_sorterenResult/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/build
+.PHONY : _robot_arm_pkg_generate_messages_check_deps_sorterenResult/fast
 
 # Convenience name for target.
 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
@@ -453,201 +528,6 @@ _robot_arm_pkg_generate_messages_check_deps_sorterenActionFeedback/fast:
 .PHONY : _robot_arm_pkg_generate_messages_check_deps_sorterenActionFeedback/fast
 
 # Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_cpp: Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_cpp
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_cpp/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
-.PHONY : actionlib_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-robot_arm_pkg_generate_messages_lisp: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/rule
-
-.PHONY : robot_arm_pkg_generate_messages_lisp
-
-# fast build rule for target.
-robot_arm_pkg_generate_messages_lisp/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/build
-.PHONY : robot_arm_pkg_generate_messages_lisp/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/rule
-
-# Convenience name for target.
-_robot_arm_pkg_generate_messages_check_deps_sorterenResult: Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/rule
-
-.PHONY : _robot_arm_pkg_generate_messages_check_deps_sorterenResult
-
-# fast build rule for target.
-_robot_arm_pkg_generate_messages_check_deps_sorterenResult/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenResult.dir/build
-.PHONY : _robot_arm_pkg_generate_messages_check_deps_sorterenResult/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_nodejs: Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-.PHONY : roscpp_generate_messages_nodejs
-
-# fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_eus: Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_py.dir/rule:
 	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_py.dir/rule
 .PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_py.dir/rule
@@ -676,6 +556,21 @@ _robot_arm_pkg_generate_messages_check_deps_sorterenAction: Manipulator/robot_ar
 _robot_arm_pkg_generate_messages_check_deps_sorterenAction/fast:
 	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenAction.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenAction.dir/build
 .PHONY : _robot_arm_pkg_generate_messages_check_deps_sorterenAction/fast
+
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/rule
+
+# Convenience name for target.
+robot_arm_pkg_gennodejs: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/rule
+
+.PHONY : robot_arm_pkg_gennodejs
+
+# fast build rule for target.
+robot_arm_pkg_gennodejs/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gennodejs.dir/build
+.PHONY : robot_arm_pkg_gennodejs/fast
 
 # Convenience name for target.
 Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenActionGoal.dir/rule:
@@ -723,6 +618,36 @@ _robot_arm_pkg_generate_messages_check_deps_sorterenGoal/fast:
 .PHONY : _robot_arm_pkg_generate_messages_check_deps_sorterenGoal/fast
 
 # Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_eus: Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_eus
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_eus/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+robot_arm_pkg_generate_messages_lisp: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/rule
+
+.PHONY : robot_arm_pkg_generate_messages_lisp
+
+# fast build rule for target.
+robot_arm_pkg_generate_messages_lisp/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_lisp.dir/build
+.PHONY : robot_arm_pkg_generate_messages_lisp/fast
+
+# Convenience name for target.
 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
 	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
 .PHONY : Manipulator/robot_arm_pkg/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
@@ -768,21 +693,6 @@ robot_arm_pkg_genlisp/fast:
 .PHONY : robot_arm_pkg_genlisp/fast
 
 # Convenience name for target.
-Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
 Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenActionResult.dir/rule:
 	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenActionResult.dir/rule
 .PHONY : Manipulator/robot_arm_pkg/CMakeFiles/_robot_arm_pkg_generate_messages_check_deps_sorterenActionResult.dir/rule
@@ -812,6 +722,21 @@ robot_arm_pkg_gencpp/fast:
 	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gencpp.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_gencpp.dir/build
 .PHONY : robot_arm_pkg_gencpp/fast
 
+# Convenience name for target.
+Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/rule:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/rule
+.PHONY : Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+robot_arm_pkg_generate_messages_nodejs: Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/rule
+
+.PHONY : robot_arm_pkg_generate_messages_nodejs
+
+# fast build rule for target.
+robot_arm_pkg_generate_messages_nodejs/fast:
+	cd /home/student/Git-projects/robot-project/rossem_ws/build && $(MAKE) -f Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/build.make Manipulator/robot_arm_pkg/CMakeFiles/robot_arm_pkg_generate_messages_nodejs.dir/build
+.PHONY : robot_arm_pkg_generate_messages_nodejs/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -823,51 +748,46 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... robot_arm_pkg_genpy"
-	@echo "... robot_arm_pkg_gennodejs"
-	@echo "... robot_arm_pkg_generate_messages_nodejs"
-	@echo "... robot_arm_pkg_geneus"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... actionlib_generate_messages_py"
 	@echo "... test"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... robot_arm_pkg_generate_messages_eus"
+	@echo "... roscpp_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_eus"
 	@echo "... rebuild_cache"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... actionlib_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... roscpp_generate_messages_py"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... robot_arm_pkg_generate_messages"
 	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... actionlib_msgs_generate_messages_eus"
-	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... robot_arm_pkg_geneus"
+	@echo "... _robot_arm_pkg_generate_messages_check_deps_sorterenResult"
 	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... _robot_arm_pkg_generate_messages_check_deps_sorterenActionFeedback"
-	@echo "... actionlib_msgs_generate_messages_cpp"
-	@echo "... robot_arm_pkg_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... _robot_arm_pkg_generate_messages_check_deps_sorterenResult"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... actionlib_generate_messages_py"
-	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_eus"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... edit_cache"
 	@echo "... robot_arm_pkg_generate_messages_py"
 	@echo "... _robot_arm_pkg_generate_messages_check_deps_sorterenAction"
+	@echo "... robot_arm_pkg_gennodejs"
 	@echo "... _robot_arm_pkg_generate_messages_check_deps_sorterenActionGoal"
 	@echo "... _robot_arm_pkg_generate_messages_check_deps_sorterenFeedback"
 	@echo "... _robot_arm_pkg_generate_messages_check_deps_sorterenGoal"
+	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... robot_arm_pkg_generate_messages_lisp"
 	@echo "... actionlib_msgs_generate_messages_lisp"
 	@echo "... robot_arm_pkg_generate_messages_cpp"
 	@echo "... robot_arm_pkg_genlisp"
-	@echo "... std_msgs_generate_messages_eus"
 	@echo "... _robot_arm_pkg_generate_messages_check_deps_sorterenActionResult"
 	@echo "... robot_arm_pkg_gencpp"
+	@echo "... robot_arm_pkg_generate_messages_nodejs"
 .PHONY : help
 
 
