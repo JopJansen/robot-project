@@ -81,7 +81,7 @@ void loop() {
     stopMotor();
     motorAan = false;
     hmiStart = false;  // Reset voor volgende cyclus
-    snprintf(buffer, sizeof(buffer), "Motor gestopt: sensor 2 detectie");
+    snprintf(buffer, sizeof(buffer), "Motor");
     str_msg.data = buffer;
     chatter.publish(&str_msg);
   }
@@ -114,6 +114,7 @@ void startMotor() {
 
 // Motor uitzetten
 void stopMotor() {
+  delay(200);
   digitalWrite(motorPin1, LOW);
   digitalWrite(motorPin2, LOW);
   analogWrite(enablePin, 0);
