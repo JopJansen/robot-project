@@ -3,6 +3,7 @@
 # === ROS AANPASSINGEN START ===
 import rospy
 from std_msgs.msg import String
+from geometry_msgs.msg import PoseStamped
 # === ROS AANPASSINGEN EINDE ===
 
 import argparse
@@ -13,6 +14,7 @@ import cv2
 import depthai as dai
 import numpy as np
 import time
+
 
 def main():
     # Create the parser
@@ -99,7 +101,11 @@ def main():
 
     # === ROS AANPASSINGEN START ===
     rospy.init_node('camera_detection_node', anonymous=True)
+     
+    # === publishers ===
     error_pub = rospy.Publisher('/camera/error', String, queue_size=10)
+    pose_pub = rospy.Publisher('/camera/detected_pose', PoseStamped, queue_size=10)
+    label_pub = rospy.Publisher('/camera/detected_label', String, queue_size=10)
     # === ROS AANPASSINGEN EINDE ===
 
     try:
@@ -153,6 +159,24 @@ def main():
                         label = labelMap[detection.label]
                     except:
                         label = str(detection.label)
+
+		    # Bereken het middelpunt van het object in 3D
+		    spatial_coords = detection.spatialCoordinates
+	
+		    # Maak een PoseStamped bericht aan met de coördinaten van het object
+		    pose_msg = PoseStamped()
+		    pose_msg.header.stamp = rospy.Time.now()
+		    pose_msg.header.frame_id = "oak_camera_frame"  # dit moet hetzelfde zijn als je TF-broadcast 	frame!
+		    pose_msg.pose.position.x = spatial_coords.x / 1000.0  # van mm naar meter
+		    pose_msg.pose.position.y = spatial_coords.y / 1000.0
+		    pose_msg.pose.position.z = spatial_coords.z / 1000.0
+
+		    # Geen rotatie bekend van camera, dus neutrale quaternion
+		    pose_msg.pose.orientation.w = 1.0
+
+		    # Publiceer de positie en het label
+		    pose_pub.publish(pose_msg)
+		    label_pub.publish(label)
 
                     cv2.putText(frame, str(label), (x1 + 10, y1 + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 255)
                     cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)

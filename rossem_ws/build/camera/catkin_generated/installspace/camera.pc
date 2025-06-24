@@ -1,0 +1,8 @@
+prefix=/home/student/Git-projects/robot-project/rossem_ws/install
+
+Name: camera
+Description: Description of camera
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
