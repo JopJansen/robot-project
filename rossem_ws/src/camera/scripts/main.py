@@ -1,42 +1,48 @@
 #!/usr/bin/env python3
 
+# === ROS AANPASSINGEN START ===
 import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import PoseStamped
+# === ROS AANPASSINGEN EINDE ===
 
 import argparse
 import os.path
 import json
+import sys
 import cv2
 import depthai as dai
 import numpy as np
 import time
 
+# === AANPASSINGEN VOOR STARTCONDITIE ===
 start_detection = False
 
 def arduino_callback(msg):
     global start_detection
-    if "Motor gestopt: sensor 2 detectie" in msg.data.lower():
+    if "motor" in msg.data.lower():
         rospy.loginfo("Startsignaal ontvangen van Arduino: Sensor 2 heeft gedetecteerd.")
         start_detection = True
+# === EINDE AANPASSINGEN ===
 
 def main():
     global start_detection
 
-    # Parse command-line arguments, including ROS-injected args
+    # Create the parser
     parser = argparse.ArgumentParser()
     parser.add_argument('-j', type=str, required=True)
     parser.add_argument('-b', type=str, required=True)
-    args, unknown = parser.parse_known_args()  # <-- deze regel voorkomt ROS-fout
+    args = parser.parse_args()
     blob_filename = args.b
     json_filename = args.j
 
-    if not (os.path.isfile(blob_filename) and os.path.isfile(json_filename)):
+    if(not os.path.isfile(blob_filename)) or (not os.path.isfile(json_filename)):
         print('Error: Bestanden niet gevonden')
         return
 
-    with open(json_filename) as f:
-        jsonData = json.load(f)
+    f = open(json_filename)
+    jsonData = json.load(f)
+    f.close()
 
     numClasses = jsonData["nn_config"]["NN_specific_metadata"]["classes"]
     labelMap = jsonData["mappings"]["labels"]
@@ -47,19 +53,7 @@ def main():
     confidenceThreshold = jsonData["nn_config"]["NN_specific_metadata"]["confidence_threshold"]
     inputSizeX, inputSizeY = map(int, jsonData["nn_config"]["input_size"].split("x"))
 
-    # === ROS INIT ===
-    rospy.init_node('camera_detection_node', anonymous=True)
-
-    error_pub = rospy.Publisher('/camera/error', String, queue_size=10)
-    pose_pub = rospy.Publisher('/camera/detected_pose', PoseStamped, queue_size=10)
-    label_pub = rospy.Publisher('/camera/detected_label', String, queue_size=10)
-
-    rospy.Subscriber('/arduino/output', String, arduino_callback)
-
-    rospy.loginfo("Wacht op signaal van Arduino (sensor 2)...")
-    rate = rospy.Rate(10)
-    while not rospy.is_shutdown() and not start_detection:
-        rate.sleep()
+    syncNN = True
 
     pipeline = dai.Pipeline()
 
@@ -97,6 +91,7 @@ def main():
     spatialDetectionNetwork.setBoundingBoxScaleFactor(0.5)
     spatialDetectionNetwork.setDepthLowerThreshold(100)
     spatialDetectionNetwork.setDepthUpperThreshold(5000)
+
     spatialDetectionNetwork.setNumClasses(numClasses)
     spatialDetectionNetwork.setCoordinateSize(coordinateSize)
     spatialDetectionNetwork.setAnchors(anchors)
@@ -105,11 +100,33 @@ def main():
 
     monoLeft.out.link(stereo.left)
     monoRight.out.link(stereo.right)
+
     camRgb.preview.link(spatialDetectionNetwork.input)
     spatialDetectionNetwork.out.link(xoutNN.input)
     stereo.depth.link(spatialDetectionNetwork.inputDepth)
-    spatialDetectionNetwork.passthrough.link(xoutRgb.input)
-    spatialDetectionNetwork.passthroughDepth.link(xoutDepth.input)
+    if syncNN:
+        spatialDetectionNetwork.passthrough.link(xoutRgb.input)
+        spatialDetectionNetwork.passthroughDepth.link(xoutDepth.input)
+    else:
+        camRgb.preview.link(xoutRgb.input)
+
+    # === ROS AANPASSINGEN START ===
+    rospy.init_node('camera_detection_node', anonymous=True)
+
+    # === publishers ===
+    error_pub = rospy.Publisher('/camera/error', String, queue_size=10)
+    pose_pub = rospy.Publisher('/camera/detected_pose', PoseStamped, queue_size=10)
+    label_pub = rospy.Publisher('/camera/detected_label', String, queue_size=10)
+
+    # === subscriber voor startconditie ===
+    rospy.Subscriber('/arduino/output', String, arduino_callback)
+
+    # Wacht tot startconditie
+    rospy.loginfo("Wacht op signaal van Arduino (sensor 2)...")
+    rate = rospy.Rate(10)
+    while not rospy.is_shutdown() and not start_detection:
+        rate.sleep()
+    # === ROS AANPASSINGEN EINDE ===
 
     try:
         with dai.Device(pipeline) as device:
@@ -121,8 +138,9 @@ def main():
             counter = 0
             fps = 0
             color = (255, 255, 255)
+
             last_detection_time = time.time()
-            timeout_duration = 15
+            timeout_duration = 15  # seconden
 
             while not rospy.is_shutdown():
                 inPreview = previewQueue.get()
@@ -130,22 +148,24 @@ def main():
                 depth = depthQueue.get()
 
                 frame = inPreview.getCvFrame()
-                detections = inDet.detections
                 depthFrame = depth.getFrame()
 
-                current_time = time.monotonic()
                 counter += 1
+                current_time = time.monotonic()
                 if (current_time - startTime) > 1:
                     fps = counter / (current_time - startTime)
                     counter = 0
                     startTime = current_time
 
+                detections = inDet.detections
+
                 if detections:
                     last_detection_time = time.time()
-                elif (time.time() - last_detection_time) > timeout_duration:
-                    rospy.logwarn("Geen object gedetecteerd binnen 15 seconden!")
-                    error_pub.publish("no_detection")
-                    last_detection_time = time.time()
+                else:
+                    if (time.time() - last_detection_time) > timeout_duration:
+                        rospy.logwarn("Geen object gedetecteerd binnen 15 seconden!")
+                        error_pub.publish("no_detection")
+                        last_detection_time = time.time()
 
                 for detection in detections:
                     x1 = int(detection.xmin * frame.shape[1])
@@ -174,7 +194,7 @@ def main():
                     cv2.putText(frame, str(label), (x1 + 10, y1 + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 255)
                     cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
 
-                cv2.putText(frame, f"FPS: {fps:.2f}", (2, frame.shape[0] - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color)
+                cv2.putText(frame, "FPS: {:.2f}".format(fps), (2, frame.shape[0] - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color)
                 cv2.imshow("Detected objects", frame)
 
                 if cv2.waitKey(1) == ord('q'):
@@ -186,4 +206,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
