@@ -14,9 +14,16 @@ import moveit_msgs.msg
 from geometry_msgs.msg import Pose
 from tf.transformations import quaternion_from_euler, quaternion_multiply
 from xarm_msgs.srv import SetInt16
+from geometry_msgs.msg import PoseStamped
 
 # === Importeer de gegenereerde Action types ===
 from robot_arm_pkg.msg import SorterenAction, SorterenFeedback, SorterenResult
+
+laatste_pose = None
+
+def pose_callback(msg):
+    global laatste_pose
+    laatste_pose = msg
 
 # === Functie om gripper aan of uit te zetten ===
 def control_gripper(state):
@@ -42,11 +49,15 @@ def sorteer_callback(goal):
         feedback.status = "Naar home gegaan"
         server.publish_feedback(feedback)
 
-        # === Stap 3: Zoek object via TF ===
-        transform = tf_buffer.lookup_transform('world', tf_frame, rospy.Time())
-        destination_pose = Pose()
-        destination_pose.position = transform.transform.translation
-        destination_pose.orientation = transform.transform.rotation
+        # === Stap 3: Wacht op een geldige pose van de vision node ===
+        if laatste_pose is None:
+        rospy.logwarn("Geen objectpositie ontvangen van vision node.")
+        result.success = False
+        server.set_aborted(result)
+        return
+
+        # === Stap 4: Transformeer de pose van camera_link naar world ===
+        transformed_pose = tf_buffer.transform(laatste_pose, "world", rospy.Duration(1.0))
 
         # === Rotatie aanpassen voor juiste gripperoriëntatie ===
         q_orig = [transform.transform.rotation.x,
@@ -56,13 +67,13 @@ def sorteer_callback(goal):
         q_rot = quaternion_from_euler(math.pi, 0, 0)  # draai 180 graden om X-as
         q_new = quaternion_multiply(q_rot, q_orig)
 
-        destination_pose.orientation.x = q_new[0]
-        destination_pose.orientation.y = q_new[1]
-        destination_pose.orientation.z = q_new[2]
-        destination_pose.orientation.w = q_new[3]
+        transformed_pose.orientation.x = q_new[0]
+        transformed_pose.orientation.y = q_new[1]
+        transformed_pose.orientation.z = q_new[2]
+        transformed_pose.orientation.w = q_new[3]
 
         # === Beweeg naar object ===
-        group.set_pose_target(destination_pose)
+        group.set_pose_target(transformed_pose)
         group.go(wait=True)
         feedback.status = "Object bereikt"
         server.publish_feedback(feedback)
@@ -82,6 +93,7 @@ def sorteer_callback(goal):
 
         # === Ga naar stand_by ===
         group.go(group.get_named_target_values("stand_by"), wait=True)
+        rospy.sleep(1)
 
         # === Ga naar gewenste sorteerbak ===
         group.set_start_state_to_current_state()
@@ -115,6 +127,9 @@ group = moveit_commander.MoveGroupCommander("arm")
 # Maak TF buffer aan om objectposities te vinden via vision
 tf_buffer = tf2_ros.Buffer(rospy.Duration(100.0))
 tf_listener = tf2_ros.TransformListener(tf_buffer)
+
+#  Abonneer op pose van camera
+rospy.Subscriber('/camera/detected_pose', PoseStamped, pose_callback)
 
 # === Start de action server ===
 server = actionlib.SimpleActionServer('sorteer_actie', SorterenAction, sorteer_callback, auto_start=False)

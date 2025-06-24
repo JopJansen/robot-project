@@ -162,7 +162,7 @@ def main():
 
                     pose_msg = PoseStamped()
                     pose_msg.header.stamp = rospy.Time.now()
-                    pose_msg.header.frame_id = "oak_camera_frame"
+                    pose_msg.header.frame_id = "camera_link"
                     pose_msg.pose.position.x = spatial_coords.x / 1000.0
                     pose_msg.pose.position.y = spatial_coords.y / 1000.0
                     pose_msg.pose.position.z = spatial_coords.z / 1000.0
