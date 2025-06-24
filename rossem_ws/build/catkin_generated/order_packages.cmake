@@ -4,8 +4,13 @@ set(CATKIN_ORDERED_PACKAGES "")
 set(CATKIN_ORDERED_PACKAGE_PATHS "")
 set(CATKIN_ORDERED_PACKAGES_IS_META "")
 set(CATKIN_ORDERED_PACKAGES_BUILD_TYPE "")
+<<<<<<< Updated upstream
 list(APPEND CATKIN_ORDERED_PACKAGES "multi_xarm5")
 list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "Manipulator/xarm_ros/examples/multi_xarm5")
+=======
+list(APPEND CATKIN_ORDERED_PACKAGES "my_demo")
+list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "Manipulator/my_xarm_lite6/my_demo")
+>>>>>>> Stashed changes
 list(APPEND CATKIN_ORDERED_PACKAGES_IS_META "False")
 list(APPEND CATKIN_ORDERED_PACKAGES_BUILD_TYPE "catkin")
 list(APPEND CATKIN_ORDERED_PACKAGES "my_lite6_bringup")
@@ -32,6 +37,7 @@ list(APPEND CATKIN_ORDERED_PACKAGES "my_lite6_moveit_config")
 list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "Manipulator/my_xarm_lite6/my_lite6_moveit_config")
 list(APPEND CATKIN_ORDERED_PACKAGES_IS_META "False")
 list(APPEND CATKIN_ORDERED_PACKAGES_BUILD_TYPE "catkin")
+<<<<<<< Updated upstream
 list(APPEND CATKIN_ORDERED_PACKAGES "uf_robot_moveit_config")
 list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "Manipulator/xarm_ros/uf_robot_moveit_config")
 list(APPEND CATKIN_ORDERED_PACKAGES_IS_META "False")
@@ -84,6 +90,8 @@ list(APPEND CATKIN_ORDERED_PACKAGES "xarm_sdk")
 list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "Manipulator/xarm_ros/xarm_sdk")
 list(APPEND CATKIN_ORDERED_PACKAGES_IS_META "False")
 list(APPEND CATKIN_ORDERED_PACKAGES_BUILD_TYPE "catkin")
+=======
+>>>>>>> Stashed changes
 list(APPEND CATKIN_ORDERED_PACKAGES "camera")
 list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "camera")
 list(APPEND CATKIN_ORDERED_PACKAGES_IS_META "False")

@@ -498,13 +498,18 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "gtest/CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/googlemock/CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/googlemock/gtest/CMakeFiles/CMakeDirectoryInformation.cmake"
+<<<<<<< Updated upstream
   "Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/CMakeDirectoryInformation.cmake"
+=======
+  "Manipulator/my_xarm_lite6/my_demo/CMakeFiles/CMakeDirectoryInformation.cmake"
+>>>>>>> Stashed changes
   "Manipulator/my_xarm_lite6/my_lite6_bringup/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/xarm_ros/xarm_bringup/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/xarm_ros/xarm_description/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/xarm_ros/dual_xarm6_moveit_config/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/xarm_ros/lite6_moveit_config/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/my_xarm_lite6/my_lite6_moveit_config/CMakeFiles/CMakeDirectoryInformation.cmake"
+<<<<<<< Updated upstream
   "Manipulator/xarm_ros/uf_robot_moveit_config/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/xarm_ros/xarm5_gripper_moveit_config/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/xarm_ros/xarm5_moveit_config/CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -518,6 +523,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "Manipulator/xarm_ros/xarm_msgs/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/my_xarm_lite6/my_demo/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/xarm_ros/xarm_sdk/CMakeFiles/CMakeDirectoryInformation.cmake"
+=======
+>>>>>>> Stashed changes
   "camera/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Manipulator/xarm_ros/xarm_vision/camera_demo/CMakeFiles/CMakeDirectoryInformation.cmake"
   "hoofdprogramma/CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -547,6 +554,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "gtest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   "gtest/googlemock/gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
+<<<<<<< Updated upstream
   "Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake"
   "Manipulator/xarm_ros/xarm_msgs/CMakeFiles/xarm_msgs_genlisp.dir/DependInfo.cmake"
   "Manipulator/xarm_ros/xarm_msgs/CMakeFiles/xarm_msgs_geneus.dir/DependInfo.cmake"
@@ -602,6 +610,10 @@ set(CMAKE_DEPEND_INFO_FILES
   "Manipulator/xarm_ros/xarm_msgs/CMakeFiles/_xarm_msgs_generate_messages_check_deps_GripperState.dir/DependInfo.cmake"
   "Manipulator/xarm_ros/xarm_sdk/CMakeFiles/xarm_cxx_sdk.dir/DependInfo.cmake"
   "camera/CMakeFiles/roscpp_generate_messages_nodejs.dir/DependInfo.cmake"
+=======
+  "Manipulator/my_xarm_lite6/my_demo/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake"
+  "camera/CMakeFiles/roscpp_generate_messages_py.dir/DependInfo.cmake"
+>>>>>>> Stashed changes
   "camera/CMakeFiles/roscpp_generate_messages_eus.dir/DependInfo.cmake"
   "camera/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "camera/CMakeFiles/roscpp_generate_messages_cpp.dir/DependInfo.cmake"
