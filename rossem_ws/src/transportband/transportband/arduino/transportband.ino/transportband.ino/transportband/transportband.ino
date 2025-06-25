@@ -1,87 +1,111 @@
 #include <ros.h>
 #include <std_msgs/String.h>
 
-// Globale ROS-objecten en status
+// ROS setup
 ros::NodeHandle nh;
 std_msgs::String str_msg;
-char buffer[50];  // Globale buffer voor ROS-berichten
+char buffer[50];
 
-// Functievoorwaartse declaratie
 void hmiCallback(const std_msgs::String& msg);
-
-// ROS-subscriber op het juiste topic 
 ros::Subscriber<std_msgs::String> hmi_sub("/transportband/commando", &hmiCallback);
-ros::Publisher chatter("/arduino/output", &str_msg);
+ros::Publisher chatter("/transportband/status", &str_msg);
 
-// Startstatus ontvangen van HMI
+// Flags en status
 volatile bool hmiStart = false;
+bool motorAan = false;
+bool noodstopActief = false;
 
-// Sensor- en motorpinnen
+// Pin configuratie
 const int trigPin1 = 11;
 const int echoPin1 = 12;
 const int trigPin2 = 10;
 const int echoPin2 = 9;
-
 const int motorPin1 = 6;
 const int motorPin2 = 5;
 const int enablePin = 3;
 
 const int detectieAfstand = 15;
-bool motorAan = false;
 
-// Callback voor ontvangen HMI-commando's
+// Timer
+unsigned long motorStartTijd = 0;
+const unsigned long motorTimeout = 10000;  // 10 seconden
+
+// HMI Callback (ontvangt START en NOODSTOP)
 void hmiCallback(const std_msgs::String& msg) {
-  if (strcmp(msg.data, "START") == 0) {  // Hoofdlettergevoelig zoals HMI zendt
+  if (strcmp(msg.data, "START") == 0) {
+    if (noodstopActief) {
+      // Reset noodstop bij nieuwe start
+      noodstopActief = false;
+    }
+
     hmiStart = true;
     snprintf(buffer, sizeof(buffer), "HMI commando ontvangen: START");
     str_msg.data = buffer;
     chatter.publish(&str_msg);
   }
+  else if (strcmp(msg.data, "NOODSTOP") == 0) {
+    stopMotor();
+    hmiStart = false;
+    motorAan = false;
+    noodstopActief = true;
+    snprintf(buffer, sizeof(buffer), "NOODSTOP ontvangen, motor gestopt");
+    str_msg.data = buffer;
+    chatter.publish(&str_msg);
+  }
+
+
 }
 
 void setup() {
-  // Sensor pinnen instellen
   pinMode(trigPin1, OUTPUT);
   pinMode(echoPin1, INPUT);
   pinMode(trigPin2, OUTPUT);
   pinMode(echoPin2, INPUT);
 
-  // Motor pinnen instellen
   pinMode(motorPin1, OUTPUT);
   pinMode(motorPin2, OUTPUT);
   pinMode(enablePin, OUTPUT);
+  stopMotor();
 
-  stopMotor();  // Motor uit bij opstart
-
-  // ROS initialisatie
   nh.initNode();
   nh.advertise(chatter);
   nh.subscribe(hmi_sub);
 
-  snprintf(buffer, sizeof(buffer), "Wacht op startcommando via /transportband/commando");
-  str_msg.data = buffer;
-  chatter.publish(&str_msg);
 }
 
 void loop() {
   int afstand1 = meetAfstand(trigPin1, echoPin1);
   int afstand2 = meetAfstand(trigPin2, echoPin2);
 
-  // Start motor bij sensor 1 detectie én HMI "START"
-  if (!motorAan && hmiStart && afstand1 > 0 && afstand1 <= detectieAfstand) {
+  // Starten alleen als geen noodstop
+  if (!motorAan && hmiStart && afstand1 > 0 && afstand1 <= detectieAfstand && !noodstopActief) {
     startMotor();
     motorAan = true;
-    snprintf(buffer, sizeof(buffer), "Motor gestart: sensor 1 + HMI START");
+    motorStartTijd = millis();
+
+    snprintf(buffer, sizeof(buffer), "Motor gestart: sensor 1 + START");
     str_msg.data = buffer;
     chatter.publish(&str_msg);
   }
 
-  // Stop motor bij sensor 2 detectie
+  // Stoppen bij sensor 2
   if (motorAan && afstand2 > 0 && afstand2 <= detectieAfstand) {
     stopMotor();
     motorAan = false;
-    hmiStart = false;  // Reset voor volgende cyclus
-    snprintf(buffer, sizeof(buffer), "Motor");
+    hmiStart = false;
+
+    snprintf(buffer, sizeof(buffer), "ready");
+    str_msg.data = buffer;
+    chatter.publish(&str_msg);
+  }
+
+  // Time-out
+  if (motorAan && (millis() - motorStartTijd > motorTimeout)) {
+    stopMotor();
+    motorAan = false;
+    hmiStart = false;
+
+    snprintf(buffer, sizeof(buffer), "ERROR: Geen detectie bij sensor 2 binnen 10 seconden");
     str_msg.data = buffer;
     chatter.publish(&str_msg);
   }
@@ -90,7 +114,6 @@ void loop() {
   delay(100);
 }
 
-// Ultrasoon afstand meten
 int meetAfstand(int trigPin, int echoPin) {
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
@@ -98,21 +121,19 @@ int meetAfstand(int trigPin, int echoPin) {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  long duration = pulseIn(echoPin, HIGH, 30000);  // max 30 ms
+  long duration = pulseIn(echoPin, HIGH, 30000);  // max 30ms
   if (duration <= 0) return -1;
 
   int afstand = duration * 0.034 / 2;
   return afstand;
 }
 
-// Motor aanzetten
 void startMotor() {
   digitalWrite(motorPin1, HIGH);
   digitalWrite(motorPin2, LOW);
-  analogWrite(enablePin, 140);  // snelheid
+  analogWrite(enablePin, 140);
 }
 
-// Motor uitzetten
 void stopMotor() {
   delay(200);
   digitalWrite(motorPin1, LOW);

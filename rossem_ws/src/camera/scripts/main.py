@@ -15,7 +15,7 @@ start_detection = False
 
 def arduino_callback(msg):
     global start_detection
-    if "motor" in msg.data.lower():
+    if "ready" in msg.data.lower():
         print('jippie')
         rospy.loginfo("Startsignaal ontvangen van Arduino: Sensor 2 heeft gedetecteerd.")
         start_detection = True
@@ -110,7 +110,7 @@ def main():
     pose_pub = rospy.Publisher('/camera/detected_pose', PoseStamped, queue_size=10)
     label_pub = rospy.Publisher('/camera/detected_label', String, queue_size=10)
 
-    rospy.Subscriber('/arduino/output', String, arduino_callback)
+    rospy.Subscriber('/transportband/status', String, arduino_callback)
 
     rospy.loginfo("Wacht op start van Arduino...")
     rate = rospy.Rate(10)
