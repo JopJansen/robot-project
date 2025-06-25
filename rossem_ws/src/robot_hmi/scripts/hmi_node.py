@@ -118,8 +118,13 @@ class HMI:
     
     def transport_status_callback(self, msg):
     if msg.data == "voorwerp_verdwenen":
-        self.emergency()
         self.status_label.config(text="FOUT - Voorwerp verdwenen", bg="red")
+        self.update_lights(green=False, orange=False, red=True)
+        self.emergency_stop = True
+        self.update_buttons()
+        self.publish_status("fout")
+        self.publish_command("voorwerp_verdwenen")
+
 
 
 if __name__ == '__main__':
