@@ -131,18 +131,13 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/student/Git-projects/robot-project/rossem_ws/build/gtest/cmake_install.cmake")
-<<<<<<< Updated upstream
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/multi_xarm5/cmake_install.cmake")
-=======
-  include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/cmake_install.cmake")
->>>>>>> Stashed changes
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_bringup/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_bringup/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_description/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/dual_xarm6_moveit_config/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/lite6_moveit_config/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_moveit_config/cmake_install.cmake")
-<<<<<<< Updated upstream
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/uf_robot_moveit_config/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm5_gripper_moveit_config/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm5_moveit_config/cmake_install.cmake")
@@ -156,8 +151,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_msgs/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_sdk/cmake_install.cmake")
-=======
->>>>>>> Stashed changes
   include("/home/student/Git-projects/robot-project/rossem_ws/build/camera/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_vision/camera_demo/cmake_install.cmake")
   include("/home/student/Git-projects/robot-project/rossem_ws/build/hoofdprogramma/cmake_install.cmake")

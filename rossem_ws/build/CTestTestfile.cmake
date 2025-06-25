@@ -5,18 +5,13 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
-<<<<<<< Updated upstream
 subdirs("Manipulator/xarm_ros/examples/multi_xarm5")
-=======
-subdirs("Manipulator/my_xarm_lite6/my_demo")
->>>>>>> Stashed changes
 subdirs("Manipulator/my_xarm_lite6/my_lite6_bringup")
 subdirs("Manipulator/xarm_ros/xarm_bringup")
 subdirs("Manipulator/xarm_ros/xarm_description")
 subdirs("Manipulator/xarm_ros/dual_xarm6_moveit_config")
 subdirs("Manipulator/xarm_ros/lite6_moveit_config")
 subdirs("Manipulator/my_xarm_lite6/my_lite6_moveit_config")
-<<<<<<< Updated upstream
 subdirs("Manipulator/xarm_ros/uf_robot_moveit_config")
 subdirs("Manipulator/xarm_ros/xarm5_gripper_moveit_config")
 subdirs("Manipulator/xarm_ros/xarm5_moveit_config")
@@ -30,8 +25,6 @@ subdirs("Manipulator/xarm_ros/examples/xarm7_vacuum_gripper_moveit_config")
 subdirs("Manipulator/xarm_ros/xarm_msgs")
 subdirs("Manipulator/my_xarm_lite6/my_demo")
 subdirs("Manipulator/xarm_ros/xarm_sdk")
-=======
->>>>>>> Stashed changes
 subdirs("camera")
 subdirs("Manipulator/xarm_ros/xarm_vision/camera_demo")
 subdirs("hoofdprogramma")

@@ -294,11 +294,7 @@ _catkin_empty_exported_target: cmake_check_build_system
 
 # fast build rule for target.
 _catkin_empty_exported_target/fast:
-<<<<<<< Updated upstream
 	$(MAKE) -f Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/_catkin_empty_exported_target.dir/build.make Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/_catkin_empty_exported_target.dir/build
-=======
-	$(MAKE) -f Manipulator/my_xarm_lite6/my_demo/CMakeFiles/_catkin_empty_exported_target.dir/build.make Manipulator/my_xarm_lite6/my_demo/CMakeFiles/_catkin_empty_exported_target.dir/build
->>>>>>> Stashed changes
 .PHONY : _catkin_empty_exported_target/fast
 
 #=============================================================================

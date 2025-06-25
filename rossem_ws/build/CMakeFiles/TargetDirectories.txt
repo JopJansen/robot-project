@@ -35,7 +35,6 @@
 /home/student/Git-projects/robot-project/rossem_ws/build/gtest/googlemock/gtest/CMakeFiles/list_install_components.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/gtest/googlemock/gtest/CMakeFiles/gtest.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/gtest/googlemock/gtest/CMakeFiles/rebuild_cache.dir
-<<<<<<< Updated upstream
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/install/strip.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/install/local.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/test.dir
@@ -44,16 +43,6 @@
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/_catkin_empty_exported_target.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/rebuild_cache.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/examples/multi_xarm5/CMakeFiles/install.dir
-=======
-/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/CMakeFiles/install/strip.dir
-/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/CMakeFiles/install/local.dir
-/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/CMakeFiles/test.dir
-/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/CMakeFiles/list_install_components.dir
-/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/CMakeFiles/edit_cache.dir
-/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/CMakeFiles/_catkin_empty_exported_target.dir
-/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/CMakeFiles/rebuild_cache.dir
-/home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_demo/CMakeFiles/install.dir
->>>>>>> Stashed changes
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_bringup/CMakeFiles/install/strip.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_bringup/CMakeFiles/edit_cache.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_bringup/CMakeFiles/list_install_components.dir
@@ -96,7 +85,6 @@
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_moveit_config/CMakeFiles/install/local.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_moveit_config/CMakeFiles/rebuild_cache.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/my_xarm_lite6/my_lite6_moveit_config/CMakeFiles/install.dir
-<<<<<<< Updated upstream
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/uf_robot_moveit_config/CMakeFiles/install/strip.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/uf_robot_moveit_config/CMakeFiles/edit_cache.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/uf_robot_moveit_config/CMakeFiles/list_install_components.dir
@@ -241,8 +229,6 @@
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_sdk/CMakeFiles/install.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_sdk/CMakeFiles/edit_cache.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/Manipulator/xarm_ros/xarm_sdk/CMakeFiles/rebuild_cache.dir
-=======
->>>>>>> Stashed changes
 /home/student/Git-projects/robot-project/rossem_ws/build/camera/CMakeFiles/install/strip.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/camera/CMakeFiles/roscpp_generate_messages_nodejs.dir
 /home/student/Git-projects/robot-project/rossem_ws/build/camera/CMakeFiles/roscpp_generate_messages_eus.dir
