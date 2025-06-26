@@ -44,6 +44,10 @@ def sorteer_callback(goal):
         tf_frame = goal.tf_frame              # bijv. 'ik_testpoint'
         doel_positie = goal.doel_positie      # bijv. 'bak_rb'
 
+        # === Gripper openen ===
+        control_gripper(0)
+        rospy.sleep(1)
+
         # === Stap 2: Ga naar 'home' positie ===
         group.go(group.get_named_target_values("home"), wait=True)
         feedback.status = "Naar home gegaan"
