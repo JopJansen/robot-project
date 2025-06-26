@@ -1,41 +1,47 @@
 #!/usr/bin/env python3
 
+# === ROS-imports: voor communicatie met andere ROS-nodes ===
 import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import PoseStamped
 
+# === Overige standaard imports ===
 import argparse
 import os.path
 import json
 import cv2
 import depthai as dai
 import time
+import numpy as np
 
+# === Globale variabele voor Arduino-signaal ===
 start_detection = False
 
+# === Callback voor Arduino-signaal ===
 def arduino_callback(msg):
     global start_detection
     if "ready" in msg.data.lower():
-        print('jippie')
         rospy.loginfo("Startsignaal ontvangen van Arduino: Sensor 2 heeft gedetecteerd.")
         start_detection = True
-    else: 
-        print('stront aan de knikker')
+    else:
+        rospy.logwarn("Onverwacht Arduino-signaal ontvangen: '%s'", msg.data)
 
 def main():
     global start_detection
 
+    # === Argument parsing ===
     parser = argparse.ArgumentParser()
-    parser.add_argument('-j', type=str, required=True)
-    parser.add_argument('-b', type=str, required=True)
+    parser.add_argument('-j', type=str, required=True)  # JSON-modelconfig
+    parser.add_argument('-b', type=str, required=True)  # Gecompileerde blob
     args, _ = parser.parse_known_args()
     blob_filename = args.b
     json_filename = args.j
 
     if not os.path.isfile(blob_filename) or not os.path.isfile(json_filename):
-        rospy.logerr('Error: Bestanden niet gevonden')
+        print('Error: Bestanden niet gevonden')
         return
 
+    # === Laad de JSON-configuratie ===
     with open(json_filename) as f:
         jsonData = json.load(f)
 
@@ -48,8 +54,9 @@ def main():
     confidenceThreshold = jsonData["nn_config"]["NN_specific_metadata"]["confidence_threshold"]
     inputSizeX, inputSizeY = map(int, jsonData["nn_config"]["input_size"].split("x"))
 
-    syncNN = True
+    syncNN = True  # Synchronisatie met NN-output
 
+    # === Initialiseer DepthAI pipeline ===
     pipeline = dai.Pipeline()
 
     camRgb = pipeline.create(dai.node.ColorCamera)
@@ -66,6 +73,7 @@ def main():
     xoutNN.setStreamName("detections")
     xoutDepth.setStreamName("depth")
 
+    # === Camera-instellingen ===
     camRgb.setPreviewSize(inputSizeX, inputSizeY)
     camRgb.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
     camRgb.setInterleaved(False)
@@ -104,16 +112,16 @@ def main():
     else:
         camRgb.preview.link(xoutRgb.input)
 
+    # === Initialiseer ROS-node en publishers ===
     rospy.init_node('camera_detection_node', anonymous=True)
+    rospy.Subscriber('/transportband/status', String, arduino_callback)
 
     error_pub = rospy.Publisher('/camera/error', String, queue_size=10)
     pose_pub = rospy.Publisher('/camera/detected_pose', PoseStamped, queue_size=10)
     label_pub = rospy.Publisher('/camera/detected_label', String, queue_size=10)
 
-    rospy.Subscriber('/transportband/status', String, arduino_callback)
-
-    rospy.loginfo("Wacht op start van Arduino...")
     rate = rospy.Rate(10)
+    rospy.loginfo("Wacht op startsignaal van Arduino...")
 
     try:
         while not rospy.is_shutdown():
@@ -131,6 +139,7 @@ def main():
                     color = (255, 255, 255)
                     last_detection_time = time.time()
                     timeout_duration = 15  # seconden
+                    error_sent = False
 
                     while not rospy.is_shutdown() and start_detection:
                         inPreview = previewQueue.tryGet()
@@ -155,9 +164,11 @@ def main():
 
                         if detections:
                             last_detection_time = time.time()
-                        elif (time.time() - last_detection_time) > timeout_duration:
+                            error_sent = False
+                        elif (time.time() - last_detection_time) > timeout_duration and not error_sent:
                             rospy.logwarn("Geen object gedetecteerd binnen 15 seconden!")
                             error_pub.publish("no_detection")
+                            error_sent = True
                             last_detection_time = time.time()
 
                         for detection in detections:
@@ -198,7 +209,6 @@ def main():
     except Exception as e:
         rospy.logerr(f"Camera-error: {e}")
         error_pub.publish("camera_error")
-
 
 if __name__ == "__main__":
     main()
