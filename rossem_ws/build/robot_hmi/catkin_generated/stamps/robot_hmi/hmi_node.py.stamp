@@ -118,7 +118,7 @@ class HMI:
     
 
     def transport_status_callback(self, msg):
-    	if msg.data == "ERROR: Geen detectie bij sensor 2 binnen 5 seconden":
+    	if msg.data == "ERROR":
            self.status_label.config(text="FOUT - Geen detectie bij sensor 2", bg="red")
            self.update_lights(green=False, orange=False, red=True)
            self.emergency_stop = True

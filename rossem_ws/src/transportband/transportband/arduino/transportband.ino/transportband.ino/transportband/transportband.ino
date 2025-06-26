@@ -28,7 +28,7 @@ const int detectieAfstand = 15;
 
 // Timer
 unsigned long motorStartTijd = 0;
-const unsigned long motorTimeout = 10000;  // 10 seconden
+const unsigned long motorTimeout = 5000;  // 5 seconden
 
 // HMI Callback (ontvangt START en NOODSTOP)
 void hmiCallback(const std_msgs::String& msg) {
