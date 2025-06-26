@@ -166,10 +166,10 @@ def main():
                             last_detection_time = time.time()
                             error_sent = False
                         elif (time.time() - last_detection_time) > timeout_duration and not error_sent:
-                            rospy.logwarn("Geen object gedetecteerd binnen 15 seconden!")
+                            rospy.logwarn("Geen object gedetecteerd binnen 5 seconden!")
                             error_pub.publish("no_detection")
-                            error_sent = True
-                            last_detection_time = time.time()
+                            label_pub.publish("ERROR")                # Voor robotarm
+                            last_detection_time = time.time()         # Reset timer
 
                         for detection in detections:
                             x1 = int(detection.xmin * frame.shape[1])
@@ -209,6 +209,7 @@ def main():
     except Exception as e:
         rospy.logerr(f"Camera-error: {e}")
         error_pub.publish("camera_error")
+        label_pub.publish("ERROR")                # Voor robotarm
 
 if __name__ == "__main__":
     main()
