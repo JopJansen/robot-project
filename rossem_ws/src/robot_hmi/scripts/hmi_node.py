@@ -116,14 +116,17 @@ class HMI:
         self.transport_pub.publish("NOODSTOP")
         self.robot_pub.publish("NOODSTOP")
     
+
     def transport_status_callback(self, msg):
-    if msg.data == "voorwerp_verdwenen":
-        self.status_label.config(text="FOUT - Voorwerp verdwenen", bg="red")
-        self.update_lights(green=False, orange=False, red=True)
-        self.emergency_stop = True
-        self.update_buttons()
-        self.publish_status("fout")
-        self.publish_command("voorwerp_verdwenen")
+    	if msg.data == "ERROR":
+           self.status_label.config(text="FOUT - Geen detectie bij sensor 2", bg="red")
+           self.update_lights(green=False, orange=False, red=True)
+           self.emergency_stop = True
+           self.update_buttons()
+           self.publish_status("fout")
+           self.publish_command("voorwerp_verdwenen")
+    	else:
+           rospy.loginfo("Transport status ontvangen: %s", msg.data)
 
 
 

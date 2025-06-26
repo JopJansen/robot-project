@@ -12,7 +12,7 @@ def callback(msg):
     elif msg.data == "NOODSTOP":
         rospy.loginfo("Transportband Noodstop")
         # Stop de motor
-
+ 
 rospy.init_node('transportband_node')
 rospy.Subscriber('/transportband/commando', String, callback)
 rospy.spin()
