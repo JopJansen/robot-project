@@ -138,7 +138,7 @@ def main():
                     fps = 0
                     color = (255, 255, 255)
                     last_detection_time = time.time()
-                    timeout_duration = 15  # seconden
+                    timeout_duration = 5  # seconden
                     error_sent = False
 
                     while not rospy.is_shutdown() and start_detection:
