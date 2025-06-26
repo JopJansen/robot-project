@@ -250,7 +250,7 @@
 <joint name="mountingplate_to_transportband_joint" type="fixed">
   <parent link="mountingplate_link"/>
   <child link="transportband_link"/>
-  <origin xyz="0.005 -0.11 0" rpy="1.57 0 0"/>
+  <origin xyz="0.005 -0.11 -0.04" rpy="1.57 0 0"/>
 </joint>
 
 <!-- camera link -->
@@ -398,7 +398,7 @@
   base_frame="camera_link"
   cam_pos_x="-0.14"
   cam_pos_y="-0.26"
-  cam_pos_z="0.54"
+  cam_pos_z="0.61"
   cam_roll="0.0"
   cam_pitch="1.5708"
   cam_yaw="-1.5708"
