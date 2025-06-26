@@ -48,7 +48,7 @@ if __name__ == '__main__':
     pub_pose_world = rospy.Publisher("/object_pose_world", PoseStamped, queue_size=1)
     # Abonneer op het topic waarop de camera PoseStamped-berichten publiceert
     # Elke keer dat er een nieuw bericht binnenkomt, wordt pose_callback aangeroepen
-    rospy.Subscriber("/camera/detected_pose", PoseStamped, pose_callback)
+    rospy.Subscriber("/camera/coordinaten", PoseStamped, pose_callback)
 
     # Zorg ervoor dat het script actief blijft om berichten te blijven verwerken
     rospy.spin()
