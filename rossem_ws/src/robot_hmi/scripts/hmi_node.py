@@ -12,7 +12,7 @@ class HMI:
         self.transport_pub = rospy.Publisher('/transportband/commando', String, queue_size=10)
         self.robot_pub = rospy.Publisher('/robot/commando', String, queue_size=10)
         self.transport_status_sub = rospy.Subscriber('/transportband/status', String, self.transport_status_callback)
-
+        self.camera_status_sub = rospy.Subscriber('camera/error',String, self.camera_status_callback)
 
         # Status label
         self.status_label = tk.Label(master, text="Wacht op start", width=30, height=2, bg="green")
@@ -128,6 +128,19 @@ class HMI:
     	else:
            rospy.loginfo("Transport status ontvangen: %s", msg.data)
 
+
+    
+    def camera_status_callback(self, msg):
+    	if msg.data == "no_detection":
+           self.status_label.config(text="FOUT - Voorwerp niet gevonden", bg="red")
+           self.update_lights(green=False, orange=False, red=True)
+           self.emergency_stop = True
+           self.update_buttons()
+           self.publish_status("fout")
+           self.publish_command("voorwerp_verdwenen")
+    	else:
+           rospy.loginfo("Transport status ontvangen: %s", msg.data)
+    
 
 
 if __name__ == '__main__':

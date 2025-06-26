@@ -14,7 +14,7 @@ def vision_callback(msg):
     # Doelcoördinaten op basis van kleur
     if kleur.lower() == "rode schroevendraaier":
         doel = "links_boven"
-    elif kleur.lower() == "groene schroevendraaier":
+    elif kleur.lower() == "groene   schroevendraaier":
         doel = "links_onder"
     elif kleur.lower() == "imbuus":
         doel = "rechts_boven"
