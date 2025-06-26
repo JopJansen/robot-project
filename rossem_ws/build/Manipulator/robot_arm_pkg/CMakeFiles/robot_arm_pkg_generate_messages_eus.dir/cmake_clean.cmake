@@ -1,12 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/robot_arm_pkg_generate_messages_eus"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/sorterenResult.l"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/sorterenAction.l"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/sorterenActionGoal.l"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/sorterenFeedback.l"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/sorterenActionResult.l"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/sorterenGoal.l"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/sorterenActionFeedback.l"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/SorterenResult.l"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/SorterenAction.l"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/SorterenActionGoal.l"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/SorterenFeedback.l"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/SorterenActionResult.l"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/SorterenGoal.l"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/msg/SorterenActionFeedback.l"
   "/home/student/Git-projects/robot-project/rossem_ws/devel/share/roseus/ros/robot_arm_pkg/manifest.l"
 )
 

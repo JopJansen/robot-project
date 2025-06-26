@@ -17,39 +17,39 @@ add_custom_target(robot_arm_pkg_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg" NAME_WE)
 add_custom_target(_robot_arm_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg" ""
 )
 
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg" NAME_WE)
 add_custom_target(_robot_arm_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:robot_arm_pkg/sorterenActionFeedback:robot_arm_pkg/sorterenGoal:robot_arm_pkg/sorterenResult:robot_arm_pkg/sorterenActionGoal:std_msgs/Header:robot_arm_pkg/sorterenActionResult:robot_arm_pkg/sorterenFeedback"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:robot_arm_pkg/SorterenResult:robot_arm_pkg/SorterenActionFeedback:robot_arm_pkg/SorterenActionResult:robot_arm_pkg/SorterenActionGoal:std_msgs/Header:robot_arm_pkg/SorterenGoal:robot_arm_pkg/SorterenFeedback"
 )
 
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg" NAME_WE)
 add_custom_target(_robot_arm_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg" "actionlib_msgs/GoalID:robot_arm_pkg/sorterenGoal:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg" "actionlib_msgs/GoalID:robot_arm_pkg/SorterenGoal:std_msgs/Header"
 )
 
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg" NAME_WE)
 add_custom_target(_robot_arm_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg" ""
 )
 
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg" NAME_WE)
 add_custom_target(_robot_arm_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:robot_arm_pkg/sorterenResult:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:robot_arm_pkg/SorterenResult:std_msgs/Header"
 )
 
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg" NAME_WE)
 add_custom_target(_robot_arm_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg" ""
 )
 
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg" NAME_WE)
 add_custom_target(_robot_arm_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:robot_arm_pkg/sorterenFeedback:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_arm_pkg" "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:robot_arm_pkg/SorterenFeedback:std_msgs/Header"
 )
 
 #
@@ -59,45 +59,45 @@ add_custom_target(_robot_arm_pkg_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_cpp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_cpp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_cpp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_cpp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_cpp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_cpp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_arm_pkg
 )
 
@@ -115,19 +115,19 @@ add_custom_target(robot_arm_pkg_generate_messages_cpp
 add_dependencies(robot_arm_pkg_generate_messages robot_arm_pkg_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_cpp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_cpp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_cpp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_cpp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_cpp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_cpp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_cpp _robot_arm_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -140,45 +140,45 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS robot_arm_pkg_generate_messages_cpp
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_eus(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_eus(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_eus(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_eus(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_eus(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_eus(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_arm_pkg
 )
 
@@ -196,19 +196,19 @@ add_custom_target(robot_arm_pkg_generate_messages_eus
 add_dependencies(robot_arm_pkg_generate_messages robot_arm_pkg_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_eus _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_eus _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_eus _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_eus _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_eus _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_eus _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_eus _robot_arm_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -221,45 +221,45 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS robot_arm_pkg_generate_messages_eus
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_lisp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_lisp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_lisp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_lisp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_lisp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_lisp(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_arm_pkg
 )
 
@@ -277,19 +277,19 @@ add_custom_target(robot_arm_pkg_generate_messages_lisp
 add_dependencies(robot_arm_pkg_generate_messages robot_arm_pkg_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_lisp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_lisp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_lisp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_lisp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_lisp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_lisp _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_lisp _robot_arm_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -302,45 +302,45 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS robot_arm_pkg_generate_messages_lis
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_nodejs(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_nodejs(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_nodejs(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_nodejs(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_nodejs(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_nodejs(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_arm_pkg
 )
 
@@ -358,19 +358,19 @@ add_custom_target(robot_arm_pkg_generate_messages_nodejs
 add_dependencies(robot_arm_pkg_generate_messages robot_arm_pkg_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_nodejs _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_nodejs _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_nodejs _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_nodejs _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_nodejs _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_nodejs _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_nodejs _robot_arm_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -383,45 +383,45 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS robot_arm_pkg_generate_messages_nod
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_py(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_py(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_py(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_py(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_py(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_arm_pkg
 )
 _generate_msg_py(robot_arm_pkg
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_arm_pkg
 )
 
@@ -439,19 +439,19 @@ add_custom_target(robot_arm_pkg_generate_messages_py
 add_dependencies(robot_arm_pkg_generate_messages robot_arm_pkg_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_py _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_py _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_py _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_py _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_py _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_py _robot_arm_pkg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg" NAME_WE)
+get_filename_component(_filename "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg" NAME_WE)
 add_dependencies(robot_arm_pkg_generate_messages_py _robot_arm_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

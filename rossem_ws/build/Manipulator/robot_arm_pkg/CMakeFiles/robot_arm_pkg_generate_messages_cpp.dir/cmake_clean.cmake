@@ -1,12 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/robot_arm_pkg_generate_messages_cpp"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/sorterenResult.h"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/sorterenAction.h"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/sorterenActionGoal.h"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/sorterenFeedback.h"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/sorterenActionResult.h"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/sorterenGoal.h"
-  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/sorterenActionFeedback.h"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/SorterenResult.h"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/SorterenAction.h"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/SorterenActionGoal.h"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/SorterenFeedback.h"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/SorterenActionResult.h"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/SorterenGoal.h"
+  "/home/student/Git-projects/robot-project/rossem_ws/devel/include/robot_arm_pkg/SorterenActionFeedback.h"
 )
 
 # Per-language clean rules from dependency scanning.

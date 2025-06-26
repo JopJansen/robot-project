@@ -1,36 +1,45 @@
 #!/usr/bin/env python
-import rospy
-import actionlib  # Nodig voor ROS Actions
-from robot_arm_pkg.msg import SorterenAction, SorterenGoal  # Actietypes importeren
+# -*- coding: utf-8 -*-
 
-# Feedback callback functie: dit wordt aangeroepen als de server feedback stuurt
+# Importeer de benodigde ROS- en actie-libraries
+import rospy
+import actionlib
+from geometry_msgs.msg import PoseStamped
+from robot_arm_pkg.msg import SorterenAction, SorterenGoal  # Action definitie importeren
+
+# === Callback functie die wordt aangeroepen zodra een nieuwe pose binnenkomt ===
+def pose_cb(msg):
+    # Log de ontvangen pose voor controle
+    rospy.loginfo("Ontvangen objectpose in frame: %s", msg.header.frame_id)
+
+    # Maak een nieuwe goal aan om naar de actionserver te sturen
+    goal = SorterenGoal()
+    goal.tf_frame = msg.header.frame_id      # Meestal 'world', dus vanaf wereld-coördinaten
+    goal.doel_positie = "bak_rb"             # Hier geef je aan naar welke bak het object moet
+
+    # Verstuur de goal naar de actionserver
+    client.send_goal(goal, feedback_cb=feedback_cb)
+    rospy.loginfo("Goal verzonden: object in '%s' -> sorteren naar '%s'",
+                  goal.tf_frame, goal.doel_positie)
+
+# === Callback functie die feedback afhandelt van de actionserver ===
 def feedback_cb(feedback):
     rospy.loginfo("Feedback van robot: " + feedback.status)
 
-# === Start de ROS node ===
+# === Initialisatie van de ROS-node ===
 rospy.init_node('sorteer_client')
 
-# Maak de client aan en verbind met de juiste servernaam
+# Maak een actionclient aan en verbind met de server met naam 'sorteer_actie'
 client = actionlib.SimpleActionClient('sorteer_actie', SorterenAction)
 
-rospy.loginfo(" Wachten op action server...")
-client.wait_for_server()  # Wacht tot de server is gestart
+# Wacht tot de server beschikbaar is
+rospy.loginfo("Wachten op sorteer action server...")
+client.wait_for_server()
+rospy.loginfo("Verbonden met action server.")
 
-# === Stuur een opdracht (goal) naar de server ===
-goal = SorterenGoal()
-goal.tf_frame = "ik_testpoint"        # TF-frame van het object dat opgepakt moet worden
-goal.doel_positie = "bak_rb"          # Naam van de sorteerbak (zoals opgeslagen in MoveIt)
+# Abonneer op het topic waarop de getransformeerde pose wordt gepubliceerd
+# Elke keer dat een nieuwe pose op /object_pose_world verschijnt, wordt pose_cb aangeroepen
+rospy.Subscriber("/object_pose_world", PoseStamped, pose_cb)
 
-rospy.loginfo(" Verzend opdracht aan robot...")
-client.send_goal(goal, feedback_cb=feedback_cb)  # Stuur goal en koppel feedback functie
-
-rospy.loginfo(" Wachten tot taak voltooid is...")
-client.wait_for_result()  # Wacht tot robot klaar is
-
-# === Resultaat controleren ===
-resultaat = client.get_result()
-if resultaat.success:
-    rospy.loginfo(" Robot heeft het object succesvol gesorteerd.")
-else:
-    rospy.logwarn(" Sorteren is mislukt.")
-
+# Houd de node actief om berichten te blijven ontvangen en verwerken
+rospy.spin()

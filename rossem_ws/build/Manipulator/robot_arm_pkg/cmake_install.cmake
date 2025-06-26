@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_arm_pkg/action" TYPE FILE FILES "/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/robot_arm_pkg/action/sorteren.action")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_arm_pkg/action" TYPE FILE FILES "/home/student/Git-projects/robot-project/rossem_ws/src/Manipulator/robot_arm_pkg/action/Sorteren.action")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_arm_pkg/msg" TYPE FILE FILES
-    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenAction.msg"
-    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionGoal.msg"
-    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionResult.msg"
-    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenActionFeedback.msg"
-    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenGoal.msg"
-    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenResult.msg"
-    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/sorterenFeedback.msg"
+    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenAction.msg"
+    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionGoal.msg"
+    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionResult.msg"
+    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenActionFeedback.msg"
+    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenGoal.msg"
+    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenResult.msg"
+    "/home/student/Git-projects/robot-project/rossem_ws/devel/share/robot_arm_pkg/msg/SorterenFeedback.msg"
     )
 endif()
 

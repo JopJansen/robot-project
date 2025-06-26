@@ -1,79 +1,40 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+import rospy
+from geometry_msgs.msg import PoseStamped
 
-# Deze regel zorgt dat het script als ROS-node uitgevoerd kan worden
+def publish_test_pose():
+    rospy.init_node('test_pose_publisher', anonymous=True)
+    pose_pub = rospy.Publisher('/camera/detected_pose', PoseStamped, queue_size=10)
 
-import rospy  # ROS Python-bibliotheek
-import tf2_ros  # TF2-bibliotheek voor transform-communicatie in ROS
-import geometry_msgs.msg  # Berichttypes voor posities en oriëntaties
+    # Wacht tot er een subscriber is (optioneel, handig voor debugging)
+    while pose_pub.get_num_connections() == 0 and not rospy.is_shutdown():
+        rospy.loginfo("Wachten op subscriber...")
+        rospy.sleep(0.1)
 
-# Initialiseer de ROS-node met de naam 'tf_broadcaster'
-rospy.init_node('tf_broadcaster')
+    # Maak de vaste pose
+    pose_msg = PoseStamped()
+    pose_msg.header.stamp = rospy.Time.now()
+    pose_msg.header.frame_id = "oak_camera_rgb_camera_optical_frame"  # of 'world', afhankelijk van je TF-structuur
 
-# Maak een broadcaster-object aan dat transform-berichten uitzendt
-br = tf2_ros.TransformBroadcaster()
+    # === Hier zet je je vaste coordinaten ===
+    pose_msg.pose.position.x = -0.2
+    pose_msg.pose.position.y = 0.25
+    pose_msg.pose.position.z = 0.4
+    pose_msg.pose.orientation.x = 0.0
+    pose_msg.pose.orientation.y = 0.0
+    pose_msg.pose.orientation.z = 0.0
+    pose_msg.pose.orientation.w = 1.0
 
-# Stel de frequentie in op 10 Hz (10 keer per seconde)
-rate = rospy.Rate(10)
+    # Publiceer eenmalig of in een loop
+    rospy.loginfo("Publiceert test-coordinaten op /camera/detected_pose...")
+    rate = rospy.Rate(1)  # 1 Hz
+    while not rospy.is_shutdown():
+        pose_msg.header.stamp = rospy.Time.now()  # Zorg dat de timestamp actueel blijft
+        pose_pub.publish(pose_msg)
+        rate.sleep()
 
-# Deze lus blijft draaien zolang de node niet is afgesloten
-while not rospy.is_shutdown():
-    # Maak een nieuw TransformStamped-bericht aan
-    t = geometry_msgs.msg.TransformStamped()
-
-    # Zet de tijd op het huidige moment
-    t.header.stamp = rospy.Time.now()
-
-    # Geef aan dat deze transform ten opzichte van het 'world' frame is
-    t.header.frame_id = "world"
-
-    # De naam van het nieuwe coördinatenframe dat je maakt
-    t.child_frame_id = "ik_testpoint"
-
-    # Stel de positie in van het 'ik_testpoint'-frame t.o.v. 'world' (in meters)
-    t.transform.translation.x = -0.09  # 50 cm naar voren
-    t.transform.translation.y = -0.3  # Geen zijwaartse verplaatsing
-    t.transform.translation.z = 0.30  # 20 cm omhoog
-
-    # Stel de oriëntatie in als geen rotatie (identiteit quaternion)
-    t.transform.rotation.x = 0.0
-    t.transform.rotation.y = 0.0
-    t.transform.rotation.z = 0.0
-    t.transform.rotation.w = 1.0
-
-    # Stuur de transform over ROS TF
-    br.sendTransform(t)
-
-    # Wacht tot de volgende cyclus
-    rate.sleep()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == '__main__':
+    try:
+        publish_test_pose()
+    except rospy.ROSInterruptException:
+        pass

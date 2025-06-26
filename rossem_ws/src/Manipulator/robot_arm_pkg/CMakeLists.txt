@@ -65,7 +65,7 @@ find_package(catkin REQUIRED COMPONENTS
 # Generate actions in the 'action' folder
  add_action_files(
    DIRECTORY action
-   FILES sorteren.action
+   FILES Sorteren.action
 #  FILES
 #  Action1.action
 #  Action2.action
