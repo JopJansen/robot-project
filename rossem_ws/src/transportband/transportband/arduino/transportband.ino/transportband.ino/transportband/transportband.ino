@@ -105,7 +105,7 @@ void loop() {
     motorAan = false;
     hmiStart = false;
 
-    snprintf(buffer, sizeof(buffer), "ERROR: Geen detectie bij sensor 2 binnen 10 seconden");
+    snprintf(buffer, sizeof(buffer), "ERROR");
     str_msg.data = buffer;
     chatter.publish(&str_msg);
   }
