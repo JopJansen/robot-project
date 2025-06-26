@@ -12,13 +12,13 @@ def vision_callback(msg):
     x, y = map(int, coords.split(","))
 
     # Doelcoördinaten op basis van kleur
-    if kleur.lower() == "rood":
+    if kleur.lower() == "rode schroevendraaier":
         doel = "links_boven"
-    elif kleur.lower() == "groen":
+    elif kleur.lower() == "groene schroevendraaier":
         doel = "links_onder"
     elif kleur.lower() == "imbuus":
         doel = "rechts_boven"
-    elif kleur.lower() == "geel":
+    elif kleur.lower() == "doorzichtige schroevendraaier":
         doel = "rechts_onder"
     else:
         rospy.logwarn("Onbekende kleur: %s", kleur)
