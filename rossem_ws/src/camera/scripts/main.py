@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 from std_msgs.msg import String
@@ -10,7 +10,7 @@ import cv2
 import depthai as dai
 import time
 import numpy as np
-from tf.transformations import quaternion_from_euler
+from scipy.spatial.transform import Rotation as R  # gebruik scipy voor quaternion
 
 start_detection = False
 
@@ -160,6 +160,7 @@ def main():
                             rospy.logwarn("Geen object gedetecteerd binnen 5 seconden!")
                             error_pub.publish("no_detection")
                             label_pub.publish("ERROR")
+                            error_sent = True
                             last_detection_time = time.time()
 
                         for detection in detections:
@@ -168,10 +169,22 @@ def main():
                             y1 = int(detection.ymin * frame.shape[0])
                             y2 = int(detection.ymax * frame.shape[0])
 
-                            label = labelMap[detection.label] if detection.label < len(labelMap) else str(detection.label)
-                            spatial_coords = detection.spatialCoordinates
+                            # Grenzen van bbox binnen frame corrigeren
+                            x1 = max(0, x1)
+                            y1 = max(0, y1)
+                            x2 = min(frame.shape[1] - 1, x2)
+                            y2 = min(frame.shape[0] - 1, y2)
+
+                            if x2 <= x1 or y2 <= y1:
+                                rospy.logwarn("Ongeldige bounding box, overslaan")
+                                continue
 
                             roi = frame[y1:y2, x1:x2]
+
+                            if roi.size == 0:
+                                rospy.logwarn("ROI is leeg, overslaan")
+                                continue
+
                             gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
                             _, thresh = cv2.threshold(gray, 50, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
                             contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -184,20 +197,22 @@ def main():
                                 if rect[1][0] < rect[1][1]:
                                     angle += 90.0
 
-                            quat = quaternion_from_euler(0, 0, np.deg2rad(angle))
+                            # Quaternion met scipy
+                            quat = R.from_euler('z', angle, degrees=True).as_quat()
 
                             pose_msg = PoseStamped()
-                            pose_msg.header.stamp = rospy.Time.now(
+                            pose_msg.header.stamp = rospy.Time.now()
                             pose_msg.header.frame_id = "oak_camera_frame"
-                            pose_msg.pose.position.x = spatial_coords.x / 1000.0
-                            pose_msg.pose.position.y = spatial_coords.y / 1000.0
-                            pose_msg.pose.position.z = spatial_coords.z / 1000.0
+                            pose_msg.pose.position.x = detection.spatialCoordinates.x / 1000.0
+                            pose_msg.pose.position.y = detection.spatialCoordinates.y / 1000.0
+                            pose_msg.pose.position.z = detection.spatialCoordinates.z / 1000.0
                             pose_msg.pose.orientation.x = quat[0]
                             pose_msg.pose.orientation.y = quat[1]
                             pose_msg.pose.orientation.z = quat[2]
                             pose_msg.pose.orientation.w = quat[3]
 
                             pose_pub.publish(pose_msg)
+                            label = labelMap[detection.label] if detection.label < len(labelMap) else str(detection.label)
                             label_pub.publish(label)
 
                             cv2.putText(frame, str(label), (x1 + 10, y1 + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
@@ -220,5 +235,6 @@ def main():
         error_pub.publish("camera_error")
         label_pub.publish("ERROR")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
+
