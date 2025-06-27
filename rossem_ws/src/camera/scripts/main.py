@@ -202,10 +202,10 @@ def main():
 
                             pose_msg = PoseStamped()
                             pose_msg.header.stamp = rospy.Time.now()
-                            pose_msg.header.frame_id = "oak_camera_frame"
+                            pose_msg.header.frame_id = "oak_camera_rgb_camera_optical_frame"
                             pose_msg.pose.position.x = detection.spatialCoordinates.x / 1000.0
                             pose_msg.pose.position.y = detection.spatialCoordinates.y / 1000.0
-                            pose_msg.pose.position.z = detection.spatialCoordinates.z / 1000.0
+                            pose_msg.pose.position.z = (detection.spatialCoordinates.z / 1000.0) - 0.05
                             pose_msg.pose.orientation.x = quat[0]
                             pose_msg.pose.orientation.y = quat[1]
                             pose_msg.pose.orientation.z = quat[2]
