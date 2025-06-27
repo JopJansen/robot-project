@@ -51,7 +51,7 @@
         <joint name="joint5" value="-0.6337" />
         <joint name="joint6" value="-1.7009" />
     </group_state>
-    <group_state name="bak_rb" group="arm">
+    <group_state name="rode schroevendraaier" group="arm">
         <joint name="joint1" value="1.7" />
         <joint name="joint2" value="0.6" />
         <joint name="joint3" value="1.4" />
@@ -59,7 +59,7 @@
         <joint name="joint5" value="-0.97" />
         <joint name="joint6" value="-0.97" />
     </group_state>
-    <group_state name="bak_ro" group="arm">
+    <group_state name="inbus" group="arm">
         <joint name="joint1" value="1.2834" />
         <joint name="joint2" value="0.8724" />
         <joint name="joint3" value="1.4315" />
@@ -67,7 +67,7 @@
         <joint name="joint5" value="-0.5528" />
         <joint name="joint6" value="-1.197" />
     </group_state>
-    <group_state name="bak_lb" group="arm">
+    <group_state name="groene schroevendraaier" group="arm">
         <joint name="joint1" value="1.7859" />
         <joint name="joint2" value="0.1016" />
         <joint name="joint3" value="0.7791" />
@@ -75,7 +75,7 @@
         <joint name="joint5" value="-0.8876" />
         <joint name="joint6" value="-0.8678" />
     </group_state>
-    <group_state name="bak_lo" group="arm">
+    <group_state name="doorzichtige schroevendraaier" group="arm">
         <joint name="joint1" value="1.1" />
         <joint name="joint2" value="0.4224" />
         <joint name="joint3" value="0.6874" />

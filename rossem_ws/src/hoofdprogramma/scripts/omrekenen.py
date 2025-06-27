@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import rospy
 from std_msgs.msg import String
 
@@ -13,13 +14,13 @@ def vision_callback(msg):
 
     # Doelcoördinaten op basis van kleur
     if kleur.lower() == "rode schroevendraaier":
-        doel = "links_boven"
-    elif kleur.lower() == "groene   schroevendraaier":
-        doel = "links_onder"
-    elif kleur.lower() == "imbuus":
-        doel = "rechts_boven"
+        doel = "bak_rb"
+    elif kleur.lower() == "groene schroevendraaier":
+        doel = "bak_lb"
+    elif kleur.lower() == "inbus":
+        doel = "bak_ro"
     elif kleur.lower() == "doorzichtige schroevendraaier":
-        doel = "rechts_onder"
+        doel = "bak_lo"
     else:
         rospy.logwarn("Onbekende kleur: %s", kleur)
         return

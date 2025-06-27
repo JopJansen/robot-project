@@ -63,31 +63,6 @@ def sorteer_callback(goal):
         # === Stap 4: Transformeer de pose van camera_link naar world ===
         transformed_pose = tf_buffer.transform(laatste_pose, "world", rospy.Duration(1.0))
 
-        # === Rotatie aanpassen voor juiste gripperoriëntatie ===
-#         q_orig = [
-#             transformed_pose.pose.orientation.x,
-#             transformed_pose.pose.orientation.y,
-#             transformed_pose.pose.orientation.z,
-#             transformed_pose.pose.orientation.w
-# ]
-#         q_rot = quaternion_from_euler(math.pi, 0, 0)  # draai 180 graden om X-as
-#         q_new = quaternion_multiply(q_rot, q_orig)
-#         q_new = np.array(q_new)
-#         q_new = q_new / np.linalg.norm(q_new)
-#         transformed_pose.pose.orientation.x = q_new[0]
-#         transformed_pose.pose.orientation.y = q_new[1]
-#         transformed_pose.pose.orientation.z = q_new[2]
-#         transformed_pose.pose.orientation.w = q_new[3]
-
-#         rospy.loginfo("Doel pose position: x=%.3f, y=%.3f, z=%.3f",
-#               transformed_pose.pose.position.x,
-#               transformed_pose.pose.position.y,
-#               transformed_pose.pose.position.z)
-#         rospy.loginfo("Doel pose orientation: x=%.3f, y=%.3f, z=%.3f, w=%.3f",
-#               transformed_pose.pose.orientation.x,
-#               transformed_pose.pose.orientation.y,
-#               transformed_pose.pose.orientation.z,
-#               transformed_pose.pose.orientation.w)
 
         # === Beweeg naar object ===
         group.set_pose_target(transformed_pose)
@@ -140,7 +115,15 @@ def sorteer_callback(goal):
 # === Initialisatie ===
 rospy.init_node('sorteer_action_server')
 moveit_commander.roscpp_initialize(sys.argv)
+
+robot = moveit_commander.RobotCommander()
+scene = moveit_commander.PlanningSceneInterface()
 group = moveit_commander.MoveGroupCommander("arm")
+
+group.set_max_velocity_scaling_factor(0.2)
+group.set_max_acceleration_scaling_factor(0.05)
+group.set_num_planning_attempts(10)
+group.set_planning_time(10)
 
 # Maak TF buffer aan om objectposities te vinden via vision
 tf_buffer = tf2_ros.Buffer(rospy.Duration(100.0))
