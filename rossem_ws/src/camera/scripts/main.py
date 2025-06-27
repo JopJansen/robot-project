@@ -13,6 +13,8 @@ import numpy as np
 from scipy.spatial.transform import Rotation as R  # gebruik scipy voor quaternion
 
 start_detection = False
+robot_start_sent = False  # globale vlag
+robot_start_pub = None    # globale publisher
 
 def arduino_callback(msg):
     global start_detection
@@ -24,6 +26,8 @@ def arduino_callback(msg):
 
 def main():
     global start_detection
+    global robot_start_sent
+    global robot_start_pub
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-j', type=str, required=True)
@@ -110,6 +114,7 @@ def main():
     error_pub = rospy.Publisher('/camera/error', String, queue_size=10)
     pose_pub = rospy.Publisher('/camera/detected_pose', PoseStamped, queue_size=10)
     label_pub = rospy.Publisher('/camera/detected_label', String, queue_size=10)
+    camera_status_pub = rospy.Publisher('/camera/status', String, queue_size=10)
 
     rate = rospy.Rate(10)
     rospy.loginfo("Wacht op startsignaal van Arduino...")
@@ -169,7 +174,6 @@ def main():
                             y1 = int(detection.ymin * frame.shape[0])
                             y2 = int(detection.ymax * frame.shape[0])
 
-                            # Grenzen van bbox binnen frame corrigeren
                             x1 = max(0, x1)
                             y1 = max(0, y1)
                             x2 = min(frame.shape[1] - 1, x2)
@@ -197,7 +201,6 @@ def main():
                                 if rect[1][0] < rect[1][1]:
                                     angle += 90.0
 
-                            # Quaternion met scipy
                             quat = R.from_euler('z', angle, degrees=True).as_quat()
 
                             pose_msg = PoseStamped()
@@ -214,6 +217,13 @@ def main():
                             pose_pub.publish(pose_msg)
                             label = labelMap[detection.label] if detection.label < len(labelMap) else str(detection.label)
                             label_pub.publish(label)
+
+                            # <<<<<< HIER je toevoeging
+                            if not robot_start_sent:
+                                camera_status.publish("klaar")
+                                rospy.loginfo("Eerste coördinaat gepubliceerd -> START signaal naar /robot_start verstuurd")
+                                robot_start_sent = True
+                            # <<<<<< EINDE toevoeging
 
                             cv2.putText(frame, str(label), (x1 + 10, y1 + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
                             cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)

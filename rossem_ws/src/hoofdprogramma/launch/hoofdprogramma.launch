@@ -17,9 +17,29 @@
         args="-b $(arg blob) -j $(arg json)"
         launch-prefix="python3" />
 
-	<node pkg="hoofdprogramma" type="hoofdprogramma.py" name="hoofdprogramma_node" output="screen" />
+  <!-- Start hoofdcontroller -->
+  <node pkg="hoofdprogramma"
+        type="hoofdprogramma.py"
+        name="hoofdprogramma_node"
+        output="screen" />
 
+  <!-- Start pose_transform -->
+  <node pkg="robot_arm_pkg"
+        type="pose_transformer.py"
+        name="pose_transformer_node"
+        output="screen" />
 
+  <!-- Start sorteer_client -->
+  <node pkg="robot_arm_pkg"
+        type="sorteer_client.py"
+        name="sorteer_client_node"
+        output="screen" />
+
+  <!-- Start sorteer_server -->
+  <node pkg="robot_arm_pkg"
+        type="sorteer_server.py"
+        name="sorteer_server_node"
+        output="screen" />
 
 </launch>
 

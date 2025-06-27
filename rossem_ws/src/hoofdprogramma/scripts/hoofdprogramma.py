@@ -3,7 +3,6 @@
 
 import rospy
 from std_msgs.msg import String, Bool
-#from std_msgs.msg import VisionResponse, RobotGoal  # Pas aan naar juiste package
 from geometry_msgs.msg import Pose2D, PoseStamped
 import tf.transformations  # om quaternion naar euler te converteren
 
@@ -14,15 +13,16 @@ class Hoofdcontroller:
 
         # Publishers
         self.vision_trigger_pub = rospy.Publisher('/vision/request_scan', Bool, queue_size=1)
-        #self.robot_goal_pub = rospy.Publisher('/robot/goal', RobotGoal, queue_size=1)
         self.transportband_pub = rospy.Publisher('/transportband/commando', String, queue_size=1)
         self.coordinaten_pub = rospy.Publisher('/camera/coordinaten', Pose2D, queue_size=1)
+        self.robot_pub = rospy.Publisher('/robot/start', Pose2D, queue_size=1)
+        self.camera_start_pub = rospy.Publisher('/camera/start', String, queue_size=1)  # <<< NIEUW
 
         # Subscribers
         rospy.Subscriber('/hmi/input', String, self.hmi_callback)
         rospy.Subscriber('/transportband/status', String, self.transportband_status_callback)
-       # rospy.Subscriber('/vision/response', VisionResponse, self.vision_callback)
-        rospy.Subscriber('/camera/detected_pose', PoseStamped, self.camera_callback)  # PoseStamped nu
+        rospy.Subscriber('/camera/detected_pose', PoseStamped, self.camera_callback)  
+        rospy.Subscriber('/camera/status', String, self.camera_status_callback)  # <<< NIEUW
 
         self.transportband_ready = False
         self.awaiting_vision = False
@@ -41,9 +41,6 @@ class Hoofdcontroller:
             self.vision_trigger_pub.publish(True)
             self.awaiting_vision = True
 
-    def vision_callback(self, msg):
-        rospy.loginfo("Vision response ontvangen")
-
     def camera_callback(self, msg):
         # Zet quaternion om naar yaw (theta)
         q = msg.pose.orientation
@@ -56,9 +53,14 @@ class Hoofdcontroller:
         pose2d.y = msg.pose.position.y
         pose2d.theta = yaw
 
-        rospy.loginfo("Coördinaten ontvangen van camera: x=%.3f, y=%.3f, theta=%.3f" % (pose2d.x, pose2d.y, pose2d.theta))
+        rospy.loginfo("Coördinaten ontvangen van camera: x=%.3f, y=%.3f, theta=%.3f", pose2d.x, pose2d.y, pose2d.theta)
         self.coordinaten_pub.publish(pose2d)
         rospy.loginfo("Coördinaten doorgestuurd naar /camera/coordinaten")
+
+    def camera_status_callback(self, msg):
+        if msg.data.strip().lower() == "klaar":
+            rospy.loginfo("Camera heeft 'klaar' gestuurd, stuur 'START' naar /camera/start")
+            self.camera_start_pub.publish("START")
 
 
 if __name__ == '__main__':
