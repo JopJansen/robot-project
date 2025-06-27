@@ -4,7 +4,7 @@ from geometry_msgs.msg import PoseStamped
 
 def publish_test_pose():
     rospy.init_node('test_pose_publisher', anonymous=True)
-    pose_pub = rospy.Publisher('/camera/detected_pose', PoseStamped, queue_size=10)
+    pose_pub = rospy.Publisher('/camera/coordinaten', PoseStamped, queue_size=10)
 
     # Wacht tot er een subscriber is (optioneel, handig voor debugging)
     while pose_pub.get_num_connections() == 0 and not rospy.is_shutdown():

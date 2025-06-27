@@ -389,6 +389,40 @@
   <origin xyz="-0.115 -0.04 -0.05" rpy="0 0 0"/> <!-- pas aan voor juiste positie -->
 </joint>
 
+<!-- bovenplaat -->
+<link name="bovenplaat_link">
+  <visual>
+    <origin xyz="0 0 0.01" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_lite6_description/meshes/bovenplaat.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="gray">
+      <color rgba="0.5 0.5 0.5 1.0"/>
+    </material>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_lite6_description/meshes/bovenplaat.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="0.3892"/>
+    <origin xyz="-0.11546 0.09763 0.06783" rpy="0 0 0"/>
+    <inertia 
+      ixx="0.01311039287" ixy="-0.00770441053" ixz="-0.00641160864"
+      iyy="0.04087287606" iyz="0.00479622192"
+      izz="0.042905365"/>
+  </inertial>
+</link>
+
+<!-- bovenplaat -->
+<joint name="mountingplate_to_bovenplaat_joint" type="fixed">
+  <parent link="mountingplate_link"/>
+  <child link="bovenplaat_link"/>
+  <origin xyz="0.39 0.25 0.7" rpy="0 0 3.14"/>
+</joint>
+
 <!-- camera position -->
 <!-- DepthAI-camera toevoegen aan robot -->
 <xacro:depthai_camera 
