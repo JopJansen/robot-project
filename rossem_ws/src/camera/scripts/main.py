@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 
-# === ROS-imports: voor communicatie met andere ROS-nodes ===
 import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import PoseStamped
-
-# === Overige standaard imports ===
 import argparse
 import os.path
 import json
@@ -13,11 +10,10 @@ import cv2
 import depthai as dai
 import time
 import numpy as np
+from tf.transformations import quaternion_from_euler
 
-# === Globale variabele voor Arduino-signaal ===
 start_detection = False
 
-# === Callback voor Arduino-signaal ===
 def arduino_callback(msg):
     global start_detection
     if "ready" in msg.data.lower():
@@ -29,10 +25,9 @@ def arduino_callback(msg):
 def main():
     global start_detection
 
-    # === Argument parsing ===
     parser = argparse.ArgumentParser()
-    parser.add_argument('-j', type=str, required=True)  # JSON-modelconfig
-    parser.add_argument('-b', type=str, required=True)  # Gecompileerde blob
+    parser.add_argument('-j', type=str, required=True)
+    parser.add_argument('-b', type=str, required=True)
     args, _ = parser.parse_known_args()
     blob_filename = args.b
     json_filename = args.j
@@ -41,7 +36,6 @@ def main():
         print('Error: Bestanden niet gevonden')
         return
 
-    # === Laad de JSON-configuratie ===
     with open(json_filename) as f:
         jsonData = json.load(f)
 
@@ -54,9 +48,8 @@ def main():
     confidenceThreshold = jsonData["nn_config"]["NN_specific_metadata"]["confidence_threshold"]
     inputSizeX, inputSizeY = map(int, jsonData["nn_config"]["input_size"].split("x"))
 
-    syncNN = True  # Synchronisatie met NN-output
+    syncNN = True
 
-    # === Initialiseer DepthAI pipeline ===
     pipeline = dai.Pipeline()
 
     camRgb = pipeline.create(dai.node.ColorCamera)
@@ -73,7 +66,6 @@ def main():
     xoutNN.setStreamName("detections")
     xoutDepth.setStreamName("depth")
 
-    # === Camera-instellingen ===
     camRgb.setPreviewSize(inputSizeX, inputSizeY)
     camRgb.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
     camRgb.setInterleaved(False)
@@ -112,7 +104,6 @@ def main():
     else:
         camRgb.preview.link(xoutRgb.input)
 
-    # === Initialiseer ROS-node en publishers ===
     rospy.init_node('camera_detection_node', anonymous=True)
     rospy.Subscriber('/transportband/status', String, arduino_callback)
 
@@ -138,7 +129,7 @@ def main():
                     fps = 0
                     color = (255, 255, 255)
                     last_detection_time = time.time()
-                    timeout_duration = 5  # seconden
+                    timeout_duration = 5
                     error_sent = False
 
                     while not rospy.is_shutdown() and start_detection:
@@ -168,8 +159,8 @@ def main():
                         elif (time.time() - last_detection_time) > timeout_duration and not error_sent:
                             rospy.logwarn("Geen object gedetecteerd binnen 5 seconden!")
                             error_pub.publish("no_detection")
-                            label_pub.publish("ERROR")                # Voor robotarm
-                            last_detection_time = time.time()         # Reset timer
+                            label_pub.publish("ERROR")
+                            last_detection_time = time.time()
 
                         for detection in detections:
                             x1 = int(detection.xmin * frame.shape[1])
@@ -180,13 +171,31 @@ def main():
                             label = labelMap[detection.label] if detection.label < len(labelMap) else str(detection.label)
                             spatial_coords = detection.spatialCoordinates
 
+                            roi = frame[y1:y2, x1:x2]
+                            gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+                            _, thresh = cv2.threshold(gray, 50, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+                            contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+                            angle = 0.0
+                            if contours:
+                                c = max(contours, key=cv2.contourArea)
+                                rect = cv2.minAreaRect(c)
+                                angle = rect[2]
+                                if rect[1][0] < rect[1][1]:
+                                    angle += 90.0
+
+                            quat = quaternion_from_euler(0, 0, np.deg2rad(angle))
+
                             pose_msg = PoseStamped()
-                            pose_msg.header.stamp = rospy.Time.now()
+                            pose_msg.header.stamp = rospy.Time.now(
                             pose_msg.header.frame_id = "oak_camera_frame"
                             pose_msg.pose.position.x = spatial_coords.x / 1000.0
                             pose_msg.pose.position.y = spatial_coords.y / 1000.0
                             pose_msg.pose.position.z = spatial_coords.z / 1000.0
-                            pose_msg.pose.orientation.w = 1.0
+                            pose_msg.pose.orientation.x = quat[0]
+                            pose_msg.pose.orientation.y = quat[1]
+                            pose_msg.pose.orientation.z = quat[2]
+                            pose_msg.pose.orientation.w = quat[3]
 
                             pose_pub.publish(pose_msg)
                             label_pub.publish(label)
@@ -209,7 +218,7 @@ def main():
     except Exception as e:
         rospy.logerr(f"Camera-error: {e}")
         error_pub.publish("camera_error")
-        label_pub.publish("ERROR")                # Voor robotarm
+        label_pub.publish("ERROR")
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
