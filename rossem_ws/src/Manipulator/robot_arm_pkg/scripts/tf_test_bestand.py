@@ -17,13 +17,13 @@ def publish_test_pose():
     pose_msg.header.frame_id = "oak_camera_rgb_camera_optical_frame"  # of 'world', afhankelijk van je TF-structuur
 
     # === Hier zet je je vaste coordinaten ===
-    pose_msg.pose.position.x = -0.1
-    pose_msg.pose.position.y = 0.0
+    pose_msg.pose.position.x = 0.19
+    pose_msg.pose.position.y = -0.05
     pose_msg.pose.position.z = 0.355
     pose_msg.pose.orientation.x = 0.0
     pose_msg.pose.orientation.y = 0.0
-    pose_msg.pose.orientation.z = 0.0
-    pose_msg.pose.orientation.w = 1.0
+    pose_msg.pose.orientation.z = 0.7
+    pose_msg.pose.orientation.w = 0.7
 
     # Publiceer eenmalig of in een loop
     rospy.loginfo("Publiceert test-coordinaten op /camera/detected_pose...")
