@@ -12,3 +12,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+catkin_install_python(PROGRAMS
+  scripts/hoofdprogramma.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+

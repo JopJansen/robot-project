@@ -165,6 +165,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/student/Git-projects/robot-project/rossem_ws/src/camera/package.xml"
   "/home/student/Git-projects/robot-project/rossem_ws/src/hoofdprogramma/CMakeLists.txt"
   "/home/student/Git-projects/robot-project/rossem_ws/src/hoofdprogramma/package.xml"
+  "/home/student/Git-projects/robot-project/rossem_ws/src/hoofdprogramma/scripts/hoofdprogramma.py"
   "/home/student/Git-projects/robot-project/rossem_ws/src/robot_hmi/CMakeLists.txt"
   "/home/student/Git-projects/robot-project/rossem_ws/src/robot_hmi/package.xml"
   "/home/student/Git-projects/robot-project/rossem_ws/src/robot_hmi/scripts/hmi_node.py"

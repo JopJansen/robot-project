@@ -430,6 +430,12 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 hardware_interface_DIR:PATH=/opt/ros/melodic/share/hardware_interface/cmake
 
 //Value Computed by CMake
+hoofdcontroller_pkg_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/hoofdcontroller_pkg
+
+//Value Computed by CMake
+hoofdcontroller_pkg_SOURCE_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/src/hoofdcontroller_pkg
+
+//Value Computed by CMake
 hoofdprogramma_BINARY_DIR:STATIC=/home/student/Git-projects/robot-project/rossem_ws/build/hoofdprogramma
 
 //Value Computed by CMake

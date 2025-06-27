@@ -1,8 +1,11 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import rospy
 from std_msgs.msg import String, Bool
-from your_package.msg import VisionResponse, RobotGoal  # vervang 'your_package' naar je package
-from geometry_msgs.msg import Pose2D
+#from std_msgs.msg import VisionResponse, RobotGoal  # Pas aan naar juiste package
+from geometry_msgs.msg import Pose2D, PoseStamped
+import tf.transformations  # om quaternion naar euler te converteren
 
 
 class Hoofdcontroller:
@@ -11,35 +14,28 @@ class Hoofdcontroller:
 
         # Publishers
         self.vision_trigger_pub = rospy.Publisher('/vision/request_scan', Bool, queue_size=1)
-        self.robot_goal_pub = rospy.Publisher('/robot/goal', RobotGoal, queue_size=1)
+        #self.robot_goal_pub = rospy.Publisher('/robot/goal', RobotGoal, queue_size=1)
         self.transportband_pub = rospy.Publisher('/transportband/commando', String, queue_size=1)
         self.coordinaten_pub = rospy.Publisher('/camera/coordinaten', Pose2D, queue_size=1)
 
         # Subscribers
         rospy.Subscriber('/hmi/input', String, self.hmi_callback)
         rospy.Subscriber('/transportband/status', String, self.transportband_status_callback)
-        rospy.Subscriber('/vision/response', VisionResponse, self.vision_callback)
-        rospy.Subscriber('/camera/detected_pose', Pose2D, self.camera_callback)
+       # rospy.Subscriber('/vision/response', VisionResponse, self.vision_callback)
+        rospy.Subscriber('/camera/detected_pose', PoseStamped, self.camera_callback)  # PoseStamped nu
 
         self.transportband_ready = False
         self.awaiting_vision = False
-
-        # Dummy publish zodat topic direct zichtbaar is
-        dummy = Pose2D(x=0.0, y=0.0, theta=0.0)
-        self.coordinaten_pub.publish(dummy)
-        rospy.loginfo("Dummy Pose2D gepubliceerd op /camera/coordinaten zodat topic zichtbaar is")
 
         rospy.loginfo("Hoofdcontroller gestart")
         rospy.spin()
 
     def hmi_callback(self, msg):
-        rospy.loginfo(f"HMI: {msg.data}")
         if msg.data == "START":
             rospy.loginfo("START ontvangen van HMI")
             self.transportband_pub.publish("START")
 
     def transportband_status_callback(self, msg):
-        rospy.loginfo(f"Status transportband: {msg.data}")
         if msg.data == "READY":
             rospy.loginfo("Transportband is klaar, trigger vision scan")
             self.vision_trigger_pub.publish(True)
@@ -49,9 +45,20 @@ class Hoofdcontroller:
         rospy.loginfo("Vision response ontvangen")
 
     def camera_callback(self, msg):
-        rospy.loginfo(f"Pose ontvangen van camera: x={msg.x}, y={msg.y}, theta={msg.theta}")
-        self.coordinaten_pub.publish(msg)
-        rospy.loginfo("Pose doorgestuurd naar /camera/coordinaten")
+        # Zet quaternion om naar yaw (theta)
+        q = msg.pose.orientation
+        euler = tf.transformations.euler_from_quaternion([q.x, q.y, q.z, q.w])
+        yaw = euler[2]  # yaw
+
+        # Zet PoseStamped om naar Pose2D met yaw
+        pose2d = Pose2D()
+        pose2d.x = msg.pose.position.x
+        pose2d.y = msg.pose.position.y
+        pose2d.theta = yaw
+
+        rospy.loginfo("Coördinaten ontvangen van camera: x=%.3f, y=%.3f, theta=%.3f" % (pose2d.x, pose2d.y, pose2d.theta))
+        self.coordinaten_pub.publish(pose2d)
+        rospy.loginfo("Coördinaten doorgestuurd naar /camera/coordinaten")
 
 
 if __name__ == '__main__':

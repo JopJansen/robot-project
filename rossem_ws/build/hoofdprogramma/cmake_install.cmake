@@ -52,3 +52,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hoofdprogramma" TYPE FILE FILES "/home/student/Git-projects/robot-project/rossem_ws/src/hoofdprogramma/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/hoofdprogramma" TYPE PROGRAM FILES "/home/student/Git-projects/robot-project/rossem_ws/build/hoofdprogramma/catkin_generated/installspace/hoofdprogramma.py")
+endif()
+

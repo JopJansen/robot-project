@@ -16,4 +16,10 @@
         output="screen"
         args="-b $(arg blob) -j $(arg json)"
         launch-prefix="python3" />
+
+	<node pkg="hoofdprogramma" type="hoofdprogramma.py" name="hoofdprogramma_node" output="screen" />
+
+
+
 </launch>
+
