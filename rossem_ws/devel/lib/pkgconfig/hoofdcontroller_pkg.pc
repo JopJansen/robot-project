@@ -1,0 +1,8 @@
+prefix=/home/student/Git-projects/robot-project/rossem_ws/devel
+
+Name: hoofdcontroller_pkg
+Description: Description of hoofdcontroller_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
