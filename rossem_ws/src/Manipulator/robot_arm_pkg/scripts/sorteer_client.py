@@ -33,6 +33,7 @@ def doelpositie_cb(msg):
 
 def start_cb(msg):
     global started
+    print ('testennnn')
     if msg.data == "START":
         started = True
         rospy.loginfo("START-commando ontvangen — sorteer_client is actief.")
@@ -52,7 +53,7 @@ if __name__ == '__main__':
     # abonneer op de relevante topics
     rospy.Subscriber("/object_pose_world", PoseStamped, pose_cb)
     rospy.Subscriber("/vision_output", String, doelpositie_cb)
-    rospy.Subscriber("/robot/start", String, start_cb)
+    rospy.Subscriber("/robot/starten", String, start_cb)
 
     rospy.spin()
 
