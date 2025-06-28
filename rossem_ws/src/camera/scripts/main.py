@@ -220,7 +220,7 @@ def main():
 
                             # <<<<<< HIER je toevoeging
                             if not robot_start_sent:
-                                camera_status.publish("klaar")
+                                camera_status_pub.publish("klaar")
                                 rospy.loginfo("Eerste coördinaat gepubliceerd -> START signaal naar /robot_start verstuurd")
                                 robot_start_sent = True
                             # <<<<<< EINDE toevoeging
