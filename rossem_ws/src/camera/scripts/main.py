@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import rospy
 from std_msgs.msg import String
@@ -223,7 +224,9 @@ def main():
                                 camera_status_pub.publish("klaar")
                                 rospy.loginfo("Eerste coördinaat gepubliceerd -> START signaal naar /robot_start verstuurd")
                                 robot_start_sent = True
-                            # <<<<<< EINDE toevoeging
+                                # <<<<<< EINDE toevoeging
+                                # <<< STOP de detection loop >>>
+                                rospy.signal_shutdown("Detectie afgerond, camera mag sluiten.")
 
                             cv2.putText(frame, str(label), (x1 + 10, y1 + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
                             cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)

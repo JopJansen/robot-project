@@ -14,8 +14,8 @@
         type="main.py"
         name="camera_detection_node"
         output="screen"
-        args="-b $(arg blob) -j $(arg json)"/>
-        <!-- aunch-prefix="python3" /> -->
+        args="-b $(arg blob) -j $(arg json)"
+        launch-prefix="python3" /> 
 
   <!-- Start hoofdcontroller -->
   <node pkg="hoofdprogramma"

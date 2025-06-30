@@ -53,10 +53,10 @@
     },
     "mappings": {
         "labels": [
-            "Doorzichtige Schroevendraaier",
-            "Groene Schroevendraaier",
-            "Inbus",
-            "Rode Schroevendraaier"
+            "doorzichtige schroevendraaier",
+            "groene schroevendraaier",
+            "inbus",
+            "rode schroevendraaier"
         ]
     },
     "version": 1
