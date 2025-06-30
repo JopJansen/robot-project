@@ -1,69 +1,118 @@
 #!/usr/bin/env python
 import rospy
-from std_msgs.msg import String
+import actionlib
+from std_msgs.msg import String, Bool
 from geometry_msgs.msg import Pose2D, PoseStamped
 import tf.transformations
+from robot_arm_pkg.msg import SorterenAction, SorterenGoal
 
 class Hoofdcontroller:
     def __init__(self):
+        # Initialiseer de ROS-node
         rospy.init_node('hoofdcontroller')
 
-        # Publishers
+        # === Publishers: sturen commando's naar andere units ===
         self.vision_trigger_pub = rospy.Publisher('/vision/request_scan', Bool, queue_size=1)
         self.transportband_pub = rospy.Publisher('/transportband/commando', String, queue_size=1)
         self.coordinaten_pub = rospy.Publisher('/camera/coordinaten', Pose2D, queue_size=1)
-        self.robot_pub = rospy.Publisher('/robot/starten', String, queue_size=1)  # Let op: String, niet Pose2D
-        self.object_pose_pub = rospy.Publisher('/object_pose_world', PoseStamped, queue_size=1)
-        self.vision_output_pub = rospy.Publisher('/vision_output', String, queue_size=1)
+        self.robot_pub = rospy.Publisher('/robot/starten', String, queue_size=1)
         self.camera_start_pub = rospy.Publisher('/camera/start', String, queue_size=1)
 
-        # Subscribers
+        # === Subscribers: ontvangen informatie van andere units ===
         rospy.Subscriber('/hmi/input', String, self.hmi_callback)
         rospy.Subscriber('/transportband/status', String, self.transportband_status_callback)
-        rospy.Subscriber('/camera/detected_pose', PoseStamped, self.camera_callback)
+        rospy.Subscriber('/object_pose_world', PoseStamped, self.pose_callback)  # getransformeerde pose
         rospy.Subscriber('/camera/status', String, self.camera_status_callback)
+        rospy.Subscriber('/vision_output', String, self.doelpositie_callback)     # doelbakje van vision
 
-        rospy.loginfo("Hoofdcontroller gestart")
-        rospy.spin()
+        # === Action client naar manipulator (SorterenAction) ===
+        self.client = actionlib.SimpleActionClient('sorteer_actie', SorterenAction)
+        rospy.loginfo("Wachten op manipulator action server...")
+        self.client.wait_for_server()
+        rospy.loginfo("Verbonden met manipulator action server.")
 
+        # === Statusbuffers ===
+        self.started = False                # of het systeem begonnen is met sorteren
+        self.laatste_pose = None            # laatst ontvangen objectpose (getransformeerd)
+        self.laatste_doelpositie = None     # laatst ontvangen doelbakje van vision
+
+        rospy.loginfo("Hoofdcontroller gestart.")
+        rospy.spin()  # hou node actief
+
+    # === CALLBACK: HMI geeft START-commando (bijv. knop ingedrukt) ===
     def hmi_callback(self, msg):
         if msg.data.strip().upper() == "START":
-            rospy.loginfo("START ontvangen van HMI -> start transportband")
+            rospy.loginfo("START ontvangen van HMI -> transportband starten.")
             self.transportband_pub.publish("START")
+            self.started = True  # systeem is nu actief
 
+    # === CALLBACK: transportband is klaar, vision mag starten ===
     def transportband_status_callback(self, msg):
         if msg.data.strip().upper() == "READY":
-            rospy.loginfo("Transportband is klaar -> trigger vision scan")
+            rospy.loginfo("Transportband status 'READY' -> trigger vision scan.")
             self.vision_trigger_pub.publish(True)
 
-    def camera_callback(self, msg):
-        # Stuur de gedetecteerde pose door naar coordinaten_pub (indien nodig)
-        pose2d = Pose2D()
-        q = msg.pose.orientation
-        euler = tf.transformations.euler_from_quaternion([q.x, q.y, q.z, q.w])
-        yaw = euler[2]
-        pose2d.x = msg.pose.position.x
-        pose2d.y = msg.pose.position.y
-        pose2d.theta = yaw
+    # === CALLBACK: getransformeerde pose ontvangen van vision pipeline ===
+    def pose_callback(self, msg):
+        if not self.started:
+            rospy.logwarn("Nog niet gestart – pose genegeerd.")
+            return
 
-        self.coordinaten_pub.publish(pose2d)
-        rospy.loginfo(f"Coördinaten camera: x={pose2d.x:.3f}, y={pose2d.y:.3f}, theta={pose2d.theta:.3f}")
+        # Sla de laatste pose op
+        self.laatste_pose = msg
+        rospy.loginfo("Nieuwe objectpose ontvangen van /object_pose_world.")
 
-        # **BELANGRIJK**: publiceer het originele PoseStamped op `/object_pose_world`
-        self.object_pose_pub.publish(msg)
+        # Probeer goal naar manipulator te sturen
+        self.verzend_sorteer_goal_als_klaar()
 
-        # Stuur start commando naar sorteer client
-        self.robot_pub.publish("START")
-        rospy.loginfo("START bericht naar /robot/starten gestuurd voor sorteer client")
+    # === CALLBACK: vision stuurt het doelbakje waarin gesorteerd moet worden ===
+    def doelpositie_callback(self, msg):
+        self.laatste_doelpositie = msg.data.strip()
+        rospy.loginfo(f"Nieuwe doelpositie ontvangen van vision: '{self.laatste_doelpositie}'")
 
-        # (optioneel) Stel een doelpositie in
-        self.vision_output_pub.publish("inbus")  # of een andere doelpositie
-        rospy.loginfo("Doelpositie 'inbus' naar /vision_output gestuurd")
+        # Probeer goal naar manipulator te sturen
+        self.verzend_sorteer_goal_als_klaar()
 
+    # === CALLBACK: camera is klaar voor nieuwe opname ===
     def camera_status_callback(self, msg):
         if msg.data.strip().lower() == "klaar":
-            rospy.loginfo("Camera status 'klaar' ontvangen -> stuur START naar /camera/start")
+            rospy.loginfo("Camera status 'klaar' -> stuur START naar /camera/start")
             self.camera_start_pub.publish("START")
+
+    # === Functie: stuur goal naar de manipulator als alle data binnen is ===
+    def verzend_sorteer_goal_als_klaar(self):
+        # Controleer of systeem gestart is
+        if not self.started:
+            return
+
+        # Wacht op zowel een objectpose als een doelpositie
+        if self.laatste_pose is None:
+            rospy.loginfo("Wacht op objectpose van vision.")
+            return
+
+        if self.laatste_doelpositie is None:
+            rospy.loginfo("Wacht op doelpositie van vision.")
+            return
+
+        # Bouw het goal op
+        goal = SorterenGoal()
+        goal.tf_frame = self.laatste_pose.header.frame_id   # meestal 'world'
+        goal.doel_positie = self.laatste_doelpositie        # bv. 'inbus' of 'torx'
+
+        # Stuur het goal naar de manipulator
+        self.client.send_goal(goal, feedback_cb=self.feedback_cb)
+        rospy.loginfo(f"Goal verzonden: tf_frame='{goal.tf_frame}', doelpositie='{goal.doel_positie}'")
+
+        # Reset buffers zodat er op nieuwe data gewacht wordt
+        self.laatste_pose = None
+        self.laatste_doelpositie = None
+
+        # Stuur status naar andere systemen dat robot bezig is
+        self.robot_pub.publish("START")
+
+    # === CALLBACK: feedback van manipulator action server ===
+    def feedback_cb(self, feedback):
+        rospy.loginfo("Feedback van manipulator: " + feedback.status)
 
 
 if __name__ == '__main__':

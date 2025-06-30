@@ -14,8 +14,8 @@
         type="main.py"
         name="camera_detection_node"
         output="screen"
-        args="-b $(arg blob) -j $(arg json)"
-        launch-prefix="python3" />
+        args="-b $(arg blob) -j $(arg json)"/>
+        <!-- aunch-prefix="python3" /> -->
 
   <!-- Start hoofdcontroller -->
   <node pkg="hoofdprogramma"
@@ -29,11 +29,6 @@
         name="pose_transformer_node"
         output="screen" />
 
-  <!-- Start sorteer_client -->
-  <node pkg="robot_arm_pkg"
-        type="sorteer_client.py"
-        name="sorteer_client_node"
-        output="screen" />
 
   <!-- Start sorteer_server -->
   <node pkg="robot_arm_pkg"
