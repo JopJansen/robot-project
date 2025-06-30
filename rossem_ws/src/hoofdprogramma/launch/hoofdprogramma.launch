@@ -5,6 +5,11 @@
   <!-- Start HMI -->
   <include file="$(find robot_hmi)/launch/start_hmi.launch" />
 
+  <!-- Start de robot met opgegeven IP-adres -->
+  <include file="$(find my_lite6_moveit_config)/launch/realMove_exec.launch">
+    <arg name="robot_ip" value="192.168.1.150" />
+  </include>
+
   <!-- Argumenten voor blob en json bestanden -->
   <arg name="blob" default="$(find camera)/scripts/p15_openvino_2022.1_6shave.blob" />
   <arg name="json" default="$(find camera)/scripts/p15.json" />
@@ -15,26 +20,26 @@
         name="camera_detection_node"
         output="screen"
         args="-b $(arg blob) -j $(arg json)"
-        launch-prefix="python3" /> 
+        launch-prefix="python3" />
 
   <!-- Start hoofdcontroller -->
   <node pkg="hoofdprogramma"
         type="hoofdprogramma.py"
         name="hoofdprogramma_node"
-        output="screen" />
+        output="screen"
+        launch-prefix="python3" />
 
   <!-- Start pose_transform -->
   <node pkg="robot_arm_pkg"
         type="pose_transformer.py"
         name="pose_transformer_node"
-        output="screen" />
-
+        output="screen"
+        launch-prefix="python3" />
 
   <!-- Start sorteer_server -->
   <node pkg="robot_arm_pkg"
         type="sorteer_server.py"
         name="sorteer_server_node"
-        output="screen" />
-
+        output="screen"
+        launch-prefix="python3" />
 </launch>
-

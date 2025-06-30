@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python 
 # -*- coding: utf-8 -*-
 
 import rospy
@@ -11,11 +11,11 @@ import cv2
 import depthai as dai
 import time
 import numpy as np
-from scipy.spatial.transform import Rotation as R  # gebruik scipy voor quaternion
+from scipy.spatial.transform import Rotation as R
 
 start_detection = False
-robot_start_sent = False  # globale vlag
-robot_start_pub = None    # globale publisher
+robot_start_sent = False
+robot_start_pub = None
 
 def arduino_callback(msg):
     global start_detection
@@ -55,60 +55,6 @@ def main():
 
     syncNN = True
 
-    pipeline = dai.Pipeline()
-
-    camRgb = pipeline.create(dai.node.ColorCamera)
-    spatialDetectionNetwork = pipeline.create(dai.node.YoloSpatialDetectionNetwork)
-    monoLeft = pipeline.create(dai.node.MonoCamera)
-    monoRight = pipeline.create(dai.node.MonoCamera)
-    stereo = pipeline.create(dai.node.StereoDepth)
-
-    xoutRgb = pipeline.create(dai.node.XLinkOut)
-    xoutNN = pipeline.create(dai.node.XLinkOut)
-    xoutDepth = pipeline.create(dai.node.XLinkOut)
-
-    xoutRgb.setStreamName("rgb")
-    xoutNN.setStreamName("detections")
-    xoutDepth.setStreamName("depth")
-
-    camRgb.setPreviewSize(inputSizeX, inputSizeY)
-    camRgb.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
-    camRgb.setInterleaved(False)
-    camRgb.setColorOrder(dai.ColorCameraProperties.ColorOrder.BGR)
-
-    monoLeft.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
-    monoLeft.setBoardSocket(dai.CameraBoardSocket.LEFT)
-    monoRight.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
-    monoRight.setBoardSocket(dai.CameraBoardSocket.RIGHT)
-
-    stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
-    stereo.setDepthAlign(dai.CameraBoardSocket.RGB)
-    stereo.setOutputSize(monoLeft.getResolutionWidth(), monoLeft.getResolutionHeight())
-
-    spatialDetectionNetwork.setBlobPath(blob_filename)
-    spatialDetectionNetwork.setConfidenceThreshold(confidenceThreshold)
-    spatialDetectionNetwork.input.setBlocking(False)
-    spatialDetectionNetwork.setBoundingBoxScaleFactor(0.5)
-    spatialDetectionNetwork.setDepthLowerThreshold(100)
-    spatialDetectionNetwork.setDepthUpperThreshold(5000)
-    spatialDetectionNetwork.setNumClasses(numClasses)
-    spatialDetectionNetwork.setCoordinateSize(coordinateSize)
-    spatialDetectionNetwork.setAnchors(anchors)
-    spatialDetectionNetwork.setAnchorMasks(anchorMasks)
-    spatialDetectionNetwork.setIouThreshold(iouThreshold)
-
-    monoLeft.out.link(stereo.left)
-    monoRight.out.link(stereo.right)
-    camRgb.preview.link(spatialDetectionNetwork.input)
-    spatialDetectionNetwork.out.link(xoutNN.input)
-    stereo.depth.link(spatialDetectionNetwork.inputDepth)
-
-    if syncNN:
-        spatialDetectionNetwork.passthrough.link(xoutRgb.input)
-        spatialDetectionNetwork.passthroughDepth.link(xoutDepth.input)
-    else:
-        camRgb.preview.link(xoutRgb.input)
-
     rospy.init_node('camera_detection_node', anonymous=True)
     rospy.Subscriber('/transportband/status', String, arduino_callback)
 
@@ -124,6 +70,60 @@ def main():
         while not rospy.is_shutdown():
             if start_detection:
                 rospy.loginfo("Start detectieproces...")
+
+                pipeline = dai.Pipeline()
+
+                camRgb = pipeline.create(dai.node.ColorCamera)
+                spatialDetectionNetwork = pipeline.create(dai.node.YoloSpatialDetectionNetwork)
+                monoLeft = pipeline.create(dai.node.MonoCamera)
+                monoRight = pipeline.create(dai.node.MonoCamera)
+                stereo = pipeline.create(dai.node.StereoDepth)
+
+                xoutRgb = pipeline.create(dai.node.XLinkOut)
+                xoutNN = pipeline.create(dai.node.XLinkOut)
+                xoutDepth = pipeline.create(dai.node.XLinkOut)
+
+                xoutRgb.setStreamName("rgb")
+                xoutNN.setStreamName("detections")
+                xoutDepth.setStreamName("depth")
+
+                camRgb.setPreviewSize(inputSizeX, inputSizeY)
+                camRgb.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
+                camRgb.setInterleaved(False)
+                camRgb.setColorOrder(dai.ColorCameraProperties.ColorOrder.BGR)
+
+                monoLeft.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+                monoLeft.setBoardSocket(dai.CameraBoardSocket.LEFT)
+                monoRight.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
+                monoRight.setBoardSocket(dai.CameraBoardSocket.RIGHT)
+
+                stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
+                stereo.setDepthAlign(dai.CameraBoardSocket.RGB)
+                stereo.setOutputSize(monoLeft.getResolutionWidth(), monoLeft.getResolutionHeight())
+
+                spatialDetectionNetwork.setBlobPath(blob_filename)
+                spatialDetectionNetwork.setConfidenceThreshold(confidenceThreshold)
+                spatialDetectionNetwork.input.setBlocking(False)
+                spatialDetectionNetwork.setBoundingBoxScaleFactor(0.5)
+                spatialDetectionNetwork.setDepthLowerThreshold(100)
+                spatialDetectionNetwork.setDepthUpperThreshold(5000)
+                spatialDetectionNetwork.setNumClasses(numClasses)
+                spatialDetectionNetwork.setCoordinateSize(coordinateSize)
+                spatialDetectionNetwork.setAnchors(anchors)
+                spatialDetectionNetwork.setAnchorMasks(anchorMasks)
+                spatialDetectionNetwork.setIouThreshold(iouThreshold)
+
+                monoLeft.out.link(stereo.left)
+                monoRight.out.link(stereo.right)
+                camRgb.preview.link(spatialDetectionNetwork.input)
+                spatialDetectionNetwork.out.link(xoutNN.input)
+                stereo.depth.link(spatialDetectionNetwork.inputDepth)
+
+                if syncNN:
+                    spatialDetectionNetwork.passthrough.link(xoutRgb.input)
+                    spatialDetectionNetwork.passthroughDepth.link(xoutDepth.input)
+                else:
+                    camRgb.preview.link(xoutRgb.input)
 
                 with dai.Device(pipeline) as device:
                     previewQueue = device.getOutputQueue(name="rgb", maxSize=4, blocking=False)
@@ -185,7 +185,6 @@ def main():
                                 continue
 
                             roi = frame[y1:y2, x1:x2]
-
                             if roi.size == 0:
                                 rospy.logwarn("ROI is leeg, overslaan")
                                 continue
@@ -219,17 +218,14 @@ def main():
                             label = labelMap[detection.label] if detection.label < len(labelMap) else str(detection.label)
                             label_pub.publish(label)
 
-                            # <<<<<< HIER je toevoeging
                             if not robot_start_sent:
                                 camera_status_pub.publish("klaar")
                                 rospy.loginfo("Eerste coördinaat gepubliceerd -> START signaal naar /robot_start verstuurd")
                                 robot_start_sent = True
-                                # <<<<<< EINDE toevoeging
-                                # <<< STOP de detection loop >>>
-                                rospy.signal_shutdown("Detectie afgerond, camera mag sluiten.")
-
-                            cv2.putText(frame, str(label), (x1 + 10, y1 + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-                            cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
+                                start_detection = False
+                                robot_start_sent = False
+                                rospy.loginfo("Detectie afgerond, wacht opnieuw op nieuwe startsignaal...")
+                                break
 
                         cv2.putText(frame, "FPS: {:.2f}".format(fps), (2, frame.shape[0] - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
                         cv2.imshow("Detected objects", frame)
@@ -250,4 +246,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -431,7 +431,7 @@
   parent="world"
   base_frame="camera_link"
   cam_pos_x="-0.14"
-  cam_pos_y="-0.26"
+  cam_pos_y="-0.21"
   cam_pos_z="0.61"
   cam_roll="0.0"
   cam_pitch="1.5708"

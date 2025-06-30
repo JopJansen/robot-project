@@ -32,14 +32,13 @@ const unsigned long motorTimeout = 5000;  // 5 seconden
 
 // HMI Callback (ontvangt START en NOODSTOP)
 void hmiCallback(const std_msgs::String& msg) {
-  if (strcmp(msg.data, "START") == 0) {
+  if (strcmp(msg.data, "START") == 0 || strcmp(msg.data, "START_CONTINUE") == 0) {
     if (noodstopActief) {
-      // Reset noodstop bij nieuwe start
       noodstopActief = false;
     }
 
     hmiStart = true;
-    snprintf(buffer, sizeof(buffer), "HMI commando ontvangen: START");
+    snprintf(buffer, sizeof(buffer), "HMI commando ontvangen: %s", msg.data);
     str_msg.data = buffer;
     chatter.publish(&str_msg);
   }
@@ -52,9 +51,10 @@ void hmiCallback(const std_msgs::String& msg) {
     str_msg.data = buffer;
     chatter.publish(&str_msg);
   }
-
-
 }
+
+
+
 
 void setup() {
   pinMode(trigPin1, OUTPUT);
