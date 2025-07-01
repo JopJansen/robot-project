@@ -148,7 +148,7 @@ def main():
                             continue
 
                         frame = inPreview.getCvFrame()
-                        depthFrame = depth.getFrame()
+                        # depthFrame = depth.getFrame()
 
                         counter += 1
                         current_time = time.monotonic()
@@ -194,6 +194,7 @@ def main():
                             contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
                             angle = 0.0
+                            # rotatie kop 
                             if contours:
                                 c = max(contours, key=cv2.contourArea)
                                 rect = cv2.minAreaRect(c)
@@ -201,29 +202,50 @@ def main():
                                 if rect[1][0] < rect[1][1]:
                                     angle += 90.0
 
-                            quat = R.from_euler('z', angle, degrees=True).as_quat()
+                                # Nieuw: contourmidden (centroid) bepalen
+                                M = cv2.moments(c)
+                                if M["m00"] != 0:
+                                    cx = int(M["m10"] / M["m00"])
+                                    cy = int(M["m01"] / M["m00"])
+                                else:
+                                    rospy.logwarn("Geen massa in contour, sla over")
+                                    continue
 
-                            pose_msg = PoseStamped()
-                            pose_msg.header.stamp = rospy.Time.now()
-                            pose_msg.header.frame_id = "oak_camera_rgb_camera_optical_frame"
-                            pose_msg.pose.position.x = detection.spatialCoordinates.x / 1000.0
-                            pose_msg.pose.position.y = detection.spatialCoordinates.y / 1000.0
-                            pose_msg.pose.position.z = 0.355
-                            pose_msg.pose.orientation.x = quat[0]
-                            pose_msg.pose.orientation.y = quat[1]
-                            pose_msg.pose.orientation.z = quat[2]
-                            pose_msg.pose.orientation.w = quat[3]
+                                # === INTRINSIEKEN camera (voor OAK-D meestal ongeveer zo) ===
+                                fx, fy = 1028.9957, 1028.9957  # brandpuntsafstand in pixels (vervang met jouw waarden)
+                                cx_cam, cy_cam = 643.9469, 364.76 # hoofdbeeldcentrum (vervang met echte waarden) 
 
-                            pose_pub.publish(pose_msg)
-                            label = labelMap[detection.label] if detection.label < len(labelMap) else str(detection.label)
-                            label_pub.publish(label)
+                                cx_global = cx + x1
+                                cy_global = cy + y1
+
+
+                                 # Zet om van pixels naar meters op z=0.355 (transportband)
+                                z = 0.355  # vaste hoogte in meter
+                                x = (cx_global - cx_cam) * z / fx
+                                y = (cy_global - cy_cam) * z / fy
+
+                                quat = R.from_euler('z', angle, degrees=True).as_quat()
+
+                                pose_msg = PoseStamped()
+                                pose_msg.header.stamp = rospy.Time.now()
+                                pose_msg.header.frame_id = "oak_camera_rgb_camera_optical_frame"
+                                pose_msg.pose.position.x = x
+                                pose_msg.pose.position.y = y
+                                pose_msg.pose.position.z = 0.355
+                                pose_msg.pose.orientation.x = quat[0]
+                                pose_msg.pose.orientation.y = quat[1]
+                                pose_msg.pose.orientation.z = quat[2]
+                                pose_msg.pose.orientation.w = quat[3]
+
+                                pose_pub.publish(pose_msg)
+                                label = labelMap[detection.label] if detection.label < len(labelMap) else str(detection.label)
+                                label_pub.publish(label)
 
                             if not robot_start_sent:
                                 camera_status_pub.publish("klaar")
                                 rospy.loginfo("Eerste coördinaat gepubliceerd -> START signaal naar /robot_start verstuurd")
                                 robot_start_sent = True
                                 start_detection = False
-                                robot_start_sent = False
                                 rospy.loginfo("Detectie afgerond, wacht opnieuw op nieuwe startsignaal...")
                                 break
 
