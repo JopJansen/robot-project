@@ -82,7 +82,7 @@ class Hoofdcontroller:
     def transportband_status_callback(self, msg):
         status = msg.data.strip().upper()
         if status == "STOP":
-            rospy.loginfo("Transportband status 'STOP' ontvangen")
+            rospy.loginfo("Transportband status 'STOP' ontvangen ")
             self.transportband_pub.publish("STOP")
 
     #aansturen action server manipulator 
