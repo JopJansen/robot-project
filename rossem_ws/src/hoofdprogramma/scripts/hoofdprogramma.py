@@ -74,9 +74,9 @@ class Hoofdcontroller:
     #start continue 
     def sorter_feedback_cb(self, feedback):
         if feedback.status.strip().upper() == "ACTIE VOLTOOID":
-        rospy.loginfo("Sorteeractie voltooid -> transportband opnieuw starten")
-        self.transportband_pub.publish("START_CONTINUE")
-        self.started = True
+            rospy.loginfo("Sorteeractie voltooid -> transportband opnieuw starten")
+            self.transportband_pub.publish("START_CONTINUE")
+            self.started = True
 
     #aansturen action server manipulator 
     def verzend_sorteer_goal_als_klaar(self):
