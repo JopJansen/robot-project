@@ -114,7 +114,6 @@ class HMI:
         self.transport_pub.publish("RESET")
 
 
-
     # === Centrale noodstop-functie
     def activate_emergency(self, msg="NOODSTOP"):
         self.emergency_stop = True
@@ -125,6 +124,30 @@ class HMI:
         self.robot_pub.publish("NOODSTOP")
         self.status_pub.publish("fout")
         self.cmd_pub.publish("emergency_stop")
+
+
+    def transport_status_callback(self, msg):
+    	if msg.data == "ERROR":
+           self.status_label.config(text="FOUT - Geen detectie bij sensor 2", bg="red")
+           self.update_lights(green=False, orange=False, red=True)
+           self.emergency_stop = True
+           self.update_buttons()
+           self.publish_status("fout")
+           self.publish_command("voorwerp_verdwenen")
+    	else:
+           rospy.loginfo("Transport status ontvangen: %s", msg.data)
+
+
+    def camera_status_callback(self, msg):
+    	if msg.data == "no_detection":
+           self.status_label.config(text="FOUT - Voorwerp niet gevonden", bg="red")
+           self.update_lights(green=False, orange=False, red=True)
+           self.emergency_stop = True
+           self.update_buttons()
+           self.publish_status("fout")
+           self.publish_command("voorwerp_verdwenen")
+    	else:
+           rospy.loginfo("Transport status ontvangen: %s", msg.data)
 
     # === Timerfunctie: check elke seconde of de robot een foutstatus heeft (via GetErr)
     def timer_check_error(self, event):
