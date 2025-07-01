@@ -60,28 +60,28 @@
         <joint name="joint6" value="-0.97" />
     </group_state>
     <group_state name="inbus" group="arm">
-        <joint name="joint1" value="1.2834" />
-        <joint name="joint2" value="0.8724" />
-        <joint name="joint3" value="1.4315" />
-        <joint name="joint4" value="2.5378" />
-        <joint name="joint5" value="-0.5528" />
-        <joint name="joint6" value="-1.197" />
+        <joint name="joint1" value="1.143" />
+        <joint name="joint2" value="0.7989" />
+        <joint name="joint3" value="1.2669" />
+        <joint name="joint4" value="0.942" />
+        <joint name="joint5" value="0.367" />
+        <joint name="joint6" value="0.0878" />
     </group_state>
     <group_state name="groene schroevendraaier" group="arm">
-        <joint name="joint1" value="1.7859" />
-        <joint name="joint2" value="0.1016" />
-        <joint name="joint3" value="0.7791" />
-        <joint name="joint4" value="2.4646" />
-        <joint name="joint5" value="-0.8876" />
-        <joint name="joint6" value="-0.8678" />
+        <joint name="joint1" value="1.697" />
+        <joint name="joint2" value="0.0986" />
+        <joint name="joint3" value="0.738" />
+        <joint name="joint4" value="2.596" />
+        <joint name="joint5" value="-0.778" />
+        <joint name="joint6" value="-0.789" />
     </group_state>
     <group_state name="doorzichtige schroevendraaier" group="arm">
-        <joint name="joint1" value="1.1" />
-        <joint name="joint2" value="0.4224" />
-        <joint name="joint3" value="0.6874" />
-        <joint name="joint4" value="1.3538" />
-        <joint name="joint5" value="-0.1794" />
-        <joint name="joint6" value="-0.2893" />
+        <joint name="joint1" value="0.943" />
+        <joint name="joint2" value="0.428" />
+        <joint name="joint3" value="0.6822" />
+        <joint name="joint4" value="1.1784" />
+        <joint name="joint5" value="0.2058" />
+        <joint name="joint6" value="-0.46958" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="end_effector" parent_link="link6" group="tool_end" />

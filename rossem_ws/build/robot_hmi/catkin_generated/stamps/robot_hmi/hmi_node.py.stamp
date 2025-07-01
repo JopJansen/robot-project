@@ -3,6 +3,7 @@ import rospy
 from std_msgs.msg import String
 import Tkinter as tk
 from std_msgs.msg import String
+from xarm_msgs.srv import GetErr  # Import service voor foutcontrole robot
 
 class HMI:
     def __init__(self, master):
@@ -43,8 +44,10 @@ class HMI:
         self.reset_btn = tk.Button(master, text="Reset", command=self.reset)
         self.reset_btn.pack(pady=5)
 
-        self.emergency_btn = tk.Button(master, text="Noodstop", command=self.emergency, bg="red")
-        self.emergency_btn.pack(pady=5)
+       # self.emergency_btn = tk.Button(master, text="Noodstop", command=self.emergency, bg="red")
+       # self.emergency_btn.pack(pady=5)
+
+        self.error_check_timer = rospy.Timer(rospy.Duration(1.0), self.timer_check_error)
 
         # ROS publishers
         self.status_pub = rospy.Publisher('/robot/status', String, queue_size=10)
@@ -106,15 +109,39 @@ class HMI:
         self.update_buttons()
 
 
-    def emergency(self):
+    #def emergency(self):
+     #   self.emergency_stop = True
+      #  self.status_label.config(text="FOUT - NOODSTOP", bg="red")
+       # self.publish_status("fout")
+        #self.publish_command("emergency_stop")
+        #self.update_lights(green=False, orange=False, red=True)
+        #self.update_buttons()
+        #self.transport_pub.publish("NOODSTOP")
+        #self.robot_pub.publish("NOODSTOP")
+
+    def activate_emergency(self, msg="NOODSTOP"):
         self.emergency_stop = True
-        self.status_label.config(text="FOUT - NOODSTOP", bg="red")
-        self.publish_status("fout")
-        self.publish_command("emergency_stop")
+        self.status_label.config(text="FOUT - " + msg, bg="red")
         self.update_lights(green=False, orange=False, red=True)
         self.update_buttons()
         self.transport_pub.publish("NOODSTOP")
         self.robot_pub.publish("NOODSTOP")
+        self.status_pub.publish("fout")
+        self.cmd_pub.publish("emergency_stop")
+
+     def timer_check_error(self, event):
+         if not self.emergency_stop:
+            try:
+                rospy.wait_for_service('/xarm/get_err', timeout=0.5)
+                get_err = rospy.ServiceProxy('/xarm/get_err', GetErr)
+                resp = get_err()
+                if resp.err_code != 0:
+                    #rospy.logerr("xArm fout gedetecteerd! Foutcode: {}".format(resp.err_code))
+                    self.activate_emergency("Robotfout: {}".format(resp.err_code))
+            except rospy.ServiceException as e:
+                rospy.logerr("Service call failed: %s" % e)
+            except rospy.ROSException:
+                #rospy.logwarn("Service niet beschikbaar (timeout)")
     
 
     def transport_status_callback(self, msg):
