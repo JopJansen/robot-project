@@ -6,7 +6,7 @@ from xarm_msgs.msg import RobotMsg
 from xarm_msgs.srv import ClearErr  
 
 class HMI:
-    def _init_(self, master):
+    def __init__(self, master):
         self.master = master
         self.master.title("Robot HMI")
         self.emergency_stop = False
@@ -158,7 +158,7 @@ class HMI:
             rospy.loginfo("Camera status ontvangen: %s", msg.data)
 
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     rospy.init_node('hmi_node')
     root = tk.Tk()
     hmi = HMI(root)

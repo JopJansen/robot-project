@@ -15,6 +15,7 @@ from geometry_msgs.msg import Pose
 from tf.transformations import quaternion_from_euler, quaternion_multiply
 from xarm_msgs.srv import SetInt16
 from geometry_msgs.msg import PoseStamped
+from std_msgs.msg import String
 
 # === Importeer de gegenereerde Action types ===
 from robot_arm_pkg.msg import SorterenAction, SorterenFeedback, SorterenResult
@@ -101,6 +102,7 @@ def sorteer_callback(goal):
         # === Ga terug naar home ===
         group.go(group.get_named_target_values("home"), wait=True)
         feedback.status = "Actie voltooid"
+        klaar_pub.publish("ACTIE VOLTOOID")
         server.publish_feedback(feedback)
 
         # === Geef resultaat terug ===
@@ -131,6 +133,7 @@ tf_listener = tf2_ros.TransformListener(tf_buffer)
 
 #  Abonneer op pose van camera
 rospy.Subscriber('/object_pose_world', PoseStamped, pose_callback)
+klaar_pub = rospy.Publisher('/manipulator/klaar', String, queue_size=10)
 
 # === Start de action server ===
 server = actionlib.SimpleActionServer('sorteer_actie', SorterenAction, sorteer_callback, auto_start=False)

@@ -51,6 +51,15 @@ void hmiCallback(const std_msgs::String& msg) {
     str_msg.data = buffer;
     chatter.publish(&str_msg);
   }
+  else if (strcmp(msg.data, "STOP") == 0) {
+    stopMotor();
+    hmiStart = false;
+    motorAan = false;
+    noodstopActief = true;
+    snprintf(buffer, sizeof(buffer), "STOP ontvangen, motor gestopt");
+    str_msg.data = buffer;
+    chatter.publish(&str_msg);
+  }  
 }
 
 

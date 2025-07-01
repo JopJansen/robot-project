@@ -30,7 +30,7 @@ class Hoofdcontroller:
         rospy.Subscriber('/camera/detected_label', String, self.doelpositie_callback)
         rospy.Subscriber('/object_pose_world', PoseStamped, self.pose_callback)
         rospy.Subscriber('/robot/status', String, self.robot_status_callback)
-
+        rospy.Subscriber('/manipulator/klaar', String, self.sorter_feedback_cb)
         self.started = True
         self.laatste_pose = None
         self.laatste_doelpositie = None
@@ -72,11 +72,18 @@ class Hoofdcontroller:
         self.verzend_sorteer_goal_als_klaar()
     
     #start continue 
-    def sorter_feedback_cb(self, feedback):
-        if feedback.status.strip().upper() == "ACTIE VOLTOOID":
+    def sorter_feedback_cb(self, msg):
+        if msg.data.strip().upper() == "ACTIE VOLTOOID":
             rospy.loginfo("Sorteeractie voltooid -> transportband opnieuw starten")
             self.transportband_pub.publish("START_CONTINUE")
             self.started = True
+
+    #start transportband
+    def transportband_status_callback(self, msg):
+        status = msg.data.strip().upper()
+        if status == "STOP":
+            rospy.loginfo("Transportband status 'STOP' ontvangen")
+            self.transportband_pub.publish("STOP")
 
     #aansturen action server manipulator 
     def verzend_sorteer_goal_als_klaar(self):
