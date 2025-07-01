@@ -78,9 +78,6 @@ class Hoofdcontroller:
         self.transportband_pub.publish("START_CONTINUE")
         self.started = True
 
-
-
-
     #aansturen action server manipulator 
     def verzend_sorteer_goal_als_klaar(self):
         if not self.started:

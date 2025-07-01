@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 import rospy
 from std_msgs.msg import String
 import Tkinter as tk

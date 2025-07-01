@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import rospy
 from std_msgs.msg import String
 import Tkinter as tk
@@ -75,7 +76,7 @@ class HMI:
         self.publish_status("in_bedrijf_once")
         self.publish_command("start_once")
         self.update_lights(green=False, orange=True, red=False)
-        self.transport_pub.publish("START")
+        self.transport_pub.publish("START_ONCES")
         self.robot_pub.publish("START_CYCLUS")
 
     # === Start continue cyclus
@@ -86,7 +87,7 @@ class HMI:
         self.publish_status("in_bedrijf_continue")
         self.publish_command("start_continue")
         self.update_lights(green=False, orange=True, red=False)
-        self.transport_pub.publish("START")
+        self.transport_pub.publish("START_CONTINTUE")
         self.robot_pub.publish("START_CYCLUS_CONTINUE")
 
     # === Stop de cyclus

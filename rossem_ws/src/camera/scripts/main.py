@@ -14,7 +14,6 @@ import numpy as np
 from scipy.spatial.transform import Rotation as R
 
 start_detection = False
-robot_start_sent = False
 robot_start_pub = None
 
 def arduino_callback(msg):
@@ -27,8 +26,6 @@ def arduino_callback(msg):
 
 def main():
     global start_detection
-    global robot_start_sent
-    global robot_start_pub
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-j', type=str, required=True)
@@ -68,6 +65,7 @@ def main():
 
     try:
         while not rospy.is_shutdown():
+
             if start_detection:
                 rospy.loginfo("Start detectieproces...")
 
@@ -137,8 +135,10 @@ def main():
                     last_detection_time = time.time()
                     timeout_duration = 5
                     error_sent = False
+                    robot_start_sent = False
 
                     while not rospy.is_shutdown() and start_detection:
+
                         inPreview = previewQueue.tryGet()
                         inDet = detectionNNQueue.tryGet()
                         depth = depthQueue.tryGet()
@@ -148,7 +148,7 @@ def main():
                             continue
 
                         frame = inPreview.getCvFrame()
-                        depthFrame = depth.getFrame()
+                        detections = inDet.detections
 
                         counter += 1
                         current_time = time.monotonic()
@@ -156,8 +156,6 @@ def main():
                             fps = counter / (current_time - startTime)
                             counter = 0
                             startTime = current_time
-
-                        detections = inDet.detections
 
                         if detections:
                             last_detection_time = time.time()
@@ -167,7 +165,7 @@ def main():
                             error_pub.publish("no_detection")
                             label_pub.publish("ERROR")
                             error_sent = True
-                            last_detection_time = time.time()
+                            # belangrijk: niet opnieuw last_detection_time resetten!
 
                         for detection in detections:
                             x1 = int(detection.xmin * frame.shape[1])
@@ -220,12 +218,9 @@ def main():
 
                             if not robot_start_sent:
                                 camera_status_pub.publish("klaar")
-                                rospy.loginfo("Eerste coördinaat gepubliceerd -> START signaal naar /robot_start verstuurd")
+                                rospy.loginfo("Coördinaat gepubliceerd, robot mag starten")
                                 robot_start_sent = True
-                                start_detection = False
-                                robot_start_sent = False
-                                rospy.loginfo("Detectie afgerond, wacht opnieuw op nieuwe startsignaal...")
-                                break
+                                # blijf daarna gewoon doordraaien zonder start_detection = False
 
                         cv2.putText(frame, "FPS: {:.2f}".format(fps), (2, frame.shape[0] - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
                         cv2.imshow("Detected objects", frame)
@@ -236,6 +231,11 @@ def main():
                             break
 
                     cv2.destroyAllWindows()
+
+                    # na detectie of q afsluiten, opnieuw wachten op Arduino signaal
+                    start_detection = False
+                    rospy.loginfo("Wacht opnieuw op startsignaal van Arduino...")
+
             else:
                 rate.sleep()
 
