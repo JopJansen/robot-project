@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Importeer de benodigde ROS Python-pakketten
 import rospy
