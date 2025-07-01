@@ -43,6 +43,7 @@ class Hoofdcontroller:
         if status == "START":
             rospy.loginfo("Transportband status 'START' ontvangen -> publiceer 'START_ONCES'")
             self.transportband_pub.publish("START_ONCES")
+
     #sensor 2 gedetecteerd start camera 
         elif status == "READY":
             rospy.loginfo("Transportband status 'READY' -> trigger vision scan.")
@@ -69,12 +70,17 @@ class Hoofdcontroller:
         rospy.loginfo("doelpositie_callback aangeroepen")
         self.laatste_doelpositie = msg.data.strip()
         self.verzend_sorteer_goal_als_klaar()
+    
     #start continue 
-    def robot_status_callback(self, msg):
-        if msg.data.strip().upper() == "KLAAR_MET_SORTEREN":
-            rospy.loginfo("Robot klaar met sorteren -> transportband opnieuw starten")
-            self.transportband_pub.publish("START_CONTINUE")
-            self.started = True
+    def sorter_feedback_cb(self, feedback):
+        if feedback.status.strip().upper() == "ACTIE VOLTOOID":
+        rospy.loginfo("Sorteeractie voltooid -> transportband opnieuw starten")
+        self.transportband_pub.publish("START_CONTINUE")
+        self.started = True
+
+
+
+
     #aansturen action server manipulator 
     def verzend_sorteer_goal_als_klaar(self):
         if not self.started:
@@ -99,6 +105,7 @@ class Hoofdcontroller:
         self.laatste_doelpositie = None
 
         self.robot_pub.publish("START")
+   
     #feedback 
     def feedback_cb(self, feedback):
         try:
