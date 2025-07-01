@@ -32,7 +32,7 @@ const unsigned long motorTimeout = 5000;  // 5 seconden
 
 // HMI Callback (ontvangt START en NOODSTOP)
 void hmiCallback(const std_msgs::String& msg) {
-  if (strcmp(msg.data, "START") == 0 || strcmp(msg.data, "START_CONTINUE") == 0) {
+  if (strcmp(msg.data, "START_ONCES") == 0 || strcmp(msg.data, "START_CONTINUE") == 0) {
     if (noodstopActief) {
       noodstopActief = false;
     }

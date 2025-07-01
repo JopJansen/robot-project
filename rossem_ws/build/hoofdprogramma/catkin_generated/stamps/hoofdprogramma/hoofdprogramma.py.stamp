@@ -11,17 +11,20 @@ class Hoofdcontroller:
     def __init__(self):
         rospy.init_node('hoofdcontroller')
 
+        # action server aanmaken
         self.client = actionlib.SimpleActionClient('sorteer_actie', SorterenAction)
         rospy.loginfo("Wachten op manipulator action server...")
         self.client.wait_for_server()
         rospy.loginfo("Verbonden met manipulator action server.")
 
+        # publishers
         self.vision_trigger_pub = rospy.Publisher('/vision/request_scan', Bool, queue_size=1)
         self.transportband_pub = rospy.Publisher('/transportband/commando', String, queue_size=1)
         self.coordinaten_pub = rospy.Publisher('/camera/coordinaten', Pose2D, queue_size=1)
         self.robot_pub = rospy.Publisher('/robot/starten', String, queue_size=1)
         self.camera_start_pub = rospy.Publisher('/camera/start', String, queue_size=1)
 
+        # subscribers 
         rospy.Subscriber('/transportband/status', String, self.transportband_status_callback)
         rospy.Subscriber('/camera/status', String, self.camera_status_callback)
         rospy.Subscriber('/camera/detected_label', String, self.doelpositie_callback)
@@ -34,17 +37,24 @@ class Hoofdcontroller:
 
         rospy.loginfo("Hoofdcontroller gestart.")
         rospy.spin()
-
+    #start transportband
     def transportband_status_callback(self, msg):
-        if msg.data.strip().upper() == "READY":
+        status = msg.data.strip().upper()
+        if status == "START":
+            rospy.loginfo("Transportband status 'START' ontvangen -> publiceer 'START_ONCES'")
+            self.transportband_pub.publish("START_ONCES")
+    #sensor 2 gedetecteerd start camera 
+        elif status == "READY":
             rospy.loginfo("Transportband status 'READY' -> trigger vision scan.")
             self.vision_trigger_pub.publish(True)
-
+        
+    #camera gedetecteerd  
     def camera_status_callback(self, msg):
         rospy.loginfo("Camera status ontvangen: %s", msg.data)
         if msg.data.strip().lower() == "klaar":
             rospy.loginfo("Camera klaar voor nieuwe opname.")
 
+    #place positie aansturen
     def pose_callback(self, msg):
         rospy.loginfo("pose_callback aangeroepen")
         if not self.started:
@@ -59,14 +69,13 @@ class Hoofdcontroller:
         rospy.loginfo("doelpositie_callback aangeroepen")
         self.laatste_doelpositie = msg.data.strip()
         self.verzend_sorteer_goal_als_klaar()
-
+    #start continue 
     def robot_status_callback(self, msg):
-        rospy.loginfo("robot_status_callback aangeroepen met data: %s", msg.data)
         if msg.data.strip().upper() == "KLAAR_MET_SORTEREN":
             rospy.loginfo("Robot klaar met sorteren -> transportband opnieuw starten")
             self.transportband_pub.publish("START_CONTINUE")
             self.started = True
-
+    #aansturen action server manipulator 
     def verzend_sorteer_goal_als_klaar(self):
         if not self.started:
             rospy.logwarn("Nog niet gestart, goal niet verzonden.")
@@ -84,19 +93,19 @@ class Hoofdcontroller:
         goal.tf_frame = self.laatste_pose.header.frame_id
         goal.doel_positie = self.laatste_doelpositie
 
-        rospy.loginfo(f"Goal verzonden: tf_frame='{goal.tf_frame}', doelpositie='{goal.doel_positie}'")
         self.client.send_goal(goal, feedback_cb=self.feedback_cb)
 
         self.laatste_pose = None
         self.laatste_doelpositie = None
 
         self.robot_pub.publish("START")
-
+    #feedback 
     def feedback_cb(self, feedback):
         try:
-            rospy.loginfo(f"Feedback van manipulator: {feedback}")
+            rospy.loginfo("Feedback van manipulator: {}".format(feedback))
         except Exception as e:
-            rospy.logwarn(f"Fout in feedback_cb: {e}")
+            rospy.logwarn("Fout in feedback_cb: {}".format(e))
+
 
 if __name__ == '__main__':
     try:

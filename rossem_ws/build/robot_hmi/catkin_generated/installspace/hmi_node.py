@@ -69,12 +69,12 @@ class HMI:
 
     def start_once(self):
         if self.emergency_stop:
-            return
+        return
         self.status_label.config(text="In bedrijf - 1 cyclus", bg="orange")
         self.publish_status("in_bedrijf_once")
         self.publish_command("start_once")
         self.update_lights(green=False, orange=True, red=False)
-        self.transport_pub.publish("START")
+        self.transport_pub.publish("START_ONCES")  # <-- aangepast van "START" naar "START_ONCES"
         self.robot_pub.publish("START_CYCLUS")
 
     def start_continuous(self):
@@ -84,7 +84,7 @@ class HMI:
         self.publish_status("in_bedrijf_continue")
         self.publish_command("start_continue")
         self.update_lights(green=False, orange=True, red=False)
-        self.transport_pub.publish("START")
+        self.transport_pub.publish("START_CONTINUE")
         self.robot_pub.publish("START_CYCLUS_CONTINUE")
 
     def stop_cycle(self):

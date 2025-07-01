@@ -240,7 +240,7 @@ def main():
                 rate.sleep()
 
     except Exception as e:
-        rospy.logerr(f"Camera-error: {e}")
+        rospy.logerr("Camera-error: {}".format(e))
         error_pub.publish("camera_error")
         label_pub.publish("ERROR")
 
