@@ -74,12 +74,9 @@ class Hoofdcontroller:
     #start continue 
     def sorter_feedback_cb(self, feedback):
         if feedback.status.strip().upper() == "ACTIE VOLTOOID":
-        rospy.loginfo("Sorteeractie voltooid -> transportband opnieuw starten")
-        self.transportband_pub.publish("START_CONTINUE")
-        self.started = True
-
-
-
+            rospy.loginfo("Sorteeractie voltooid -> transportband opnieuw starten")
+            self.transportband_pub.publish("START_CONTINUE")
+            self.started = True
 
     #aansturen action server manipulator 
     def verzend_sorteer_goal_als_klaar(self):
@@ -112,6 +109,11 @@ class Hoofdcontroller:
             rospy.loginfo("Feedback van manipulator: {}".format(feedback))
         except Exception as e:
             rospy.logwarn("Fout in feedback_cb: {}".format(e))
+	
+        # robot status callback
+    def robot_status_callback(self, msg):
+        rospy.loginfo("Robot status ontvangen: %s", msg.data)
+
 
 
 if __name__ == '__main__':

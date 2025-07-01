@@ -15,7 +15,7 @@ def fix_optical_pose(pose_msg):  # <-- toegevoegd
     # Positie corrigeren voor optical frame (Z naar beneden, Y naar beneden → spiegelen)
     fixed.pose.position.x = pose_msg.pose.position.x
     fixed.pose.position.y = -pose_msg.pose.position.y
-    fixed.pose.position.z = -pose_msg.pose.position.z
+    fixed.pose.position.z = pose_msg.pose.position.z
 
     # Oriëntatie nog niet aangepast (optioneel)
     fixed.pose.orientation = pose_msg.pose.orientation
@@ -37,6 +37,16 @@ def pose_callback(msg):
         # === Pas Y- en Z-as aan vóór transformatie (toegevoegd) ===
         fixed_msg = fix_optical_pose(msg)  # <-- aangepaste regel
         transformed_pose = tf2_geometry_msgs.do_transform_pose(fixed_msg, transform)
+        
+         # Print de getransformeerde coördinaten
+        rospy.loginfo("Getransformeerde pose:\n"
+                      "x: %.3f\n"
+                      "y: %.3f\n"
+                      "z: %.3f" % (
+                          transformed_pose.pose.position.x,
+                          transformed_pose.pose.position.y,
+                          transformed_pose.pose.position.z
+                      ))
 
         # Log de getransformeerde pose naar de terminal
         rospy.loginfo("Getransformeerde pose in 'world':")

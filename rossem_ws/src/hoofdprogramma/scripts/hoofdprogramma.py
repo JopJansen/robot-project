@@ -109,6 +109,11 @@ class Hoofdcontroller:
             rospy.loginfo("Feedback van manipulator: {}".format(feedback))
         except Exception as e:
             rospy.logwarn("Fout in feedback_cb: {}".format(e))
+	
+        # robot status callback
+    def robot_status_callback(self, msg):
+        rospy.loginfo("Robot status ontvangen: %s", msg.data)
+
 
 
 if __name__ == '__main__':

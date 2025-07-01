@@ -122,8 +122,8 @@ group = moveit_commander.MoveGroupCommander("arm")
 
 group.set_max_velocity_scaling_factor(0.2)
 group.set_max_acceleration_scaling_factor(0.05)
-group.set_num_planning_attempts(10)
-group.set_planning_time(10)
+group.set_num_planning_attempts(15)
+group.set_planning_time(15)
 
 # Maak TF buffer aan om objectposities te vinden via vision
 tf_buffer = tf2_ros.Buffer(rospy.Duration(100.0))
