@@ -16,6 +16,9 @@ class HMI:
         self.robot_pub = rospy.Publisher('/robot/commando', String, queue_size=10)
         self.status_pub = rospy.Publisher('/robot/status', String, queue_size=10)
         self.cmd_pub = rospy.Publisher('/robot/command', String, queue_size=10)
+        self.camera_status_sub = rospy.Subscriber('camera/error',String, self.camera_status_callback)
+
+
 
         # Status label
         self.status_label = tk.Label(master, text="Wacht op start", width=30, height=2, bg="green")
@@ -41,7 +44,6 @@ class HMI:
 
         self.reset_btn = tk.Button(master, text="Reset", command=self.reset)
         self.reset_btn.pack(pady=5)
-
 
 
         # Start periodic check for fysieke robot-noodstop (elke seconde)
@@ -109,6 +111,7 @@ class HMI:
         self.publish_command("reset")
         self.update_lights(green=True, orange=False, red=False)
         self.update_buttons()
+        self.transport_pub.publish("RESET")
 
 
 
