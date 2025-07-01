@@ -2,4 +2,8 @@
 source_root_dir = '/home/student/Git-projects/robot-project/rossem_ws/src'
 whitelisted_packages = ''.split(';') if '' != '' else []
 blacklisted_packages = ''.split(';') if '' != '' else []
+<<<<<<< HEAD
 underlay_workspaces = '/home/student/catkin_ws/devel;/home/student/arduino_ws/devel;/home/student/range_sensor_tutorial_ws/devel;/home/student/rospackages_ws/devel;/opt/ros/melodic'.split(';') if '/home/student/catkin_ws/devel;/home/student/arduino_ws/devel;/home/student/range_sensor_tutorial_ws/devel;/home/student/rospackages_ws/devel;/opt/ros/melodic' != '' else []
+=======
+underlay_workspaces = '/home/student/Git-projects/robot-project/rossem_ws/devel;/home/student/rospackages_ws/devel;/opt/ros/melodic'.split(';') if '/home/student/Git-projects/robot-project/rossem_ws/devel;/home/student/rospackages_ws/devel;/opt/ros/melodic' != '' else []
+>>>>>>> pose veranderd

@@ -154,7 +154,11 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
+<<<<<<< HEAD
     foreach(path /home/student/Git-projects/robot-project/rossem_ws/devel/lib;/home/student/catkin_ws/devel/lib;/home/student/arduino_ws/devel/lib;/home/student/range_sensor_tutorial_ws/devel/lib;/home/student/rospackages_ws/devel/lib;/opt/ros/melodic/lib)
+=======
+    foreach(path /home/student/Git-projects/robot-project/rossem_ws/devel/lib;/home/student/Git-projects/robot-project/rossem_ws/devel/lib;/home/student/rospackages_ws/devel/lib;/opt/ros/melodic/lib)
+>>>>>>> pose veranderd
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

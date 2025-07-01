@@ -268,7 +268,11 @@ if __name__ == '__main__':
 
         if not args.local:
             # environment at generation time
+<<<<<<< HEAD
             CMAKE_PREFIX_PATH = r'/home/student/catkin_ws/devel;/home/student/arduino_ws/devel;/home/student/range_sensor_tutorial_ws/devel;/home/student/rospackages_ws/devel;/opt/ros/melodic'.split(';')
+=======
+            CMAKE_PREFIX_PATH = r'/home/student/Git-projects/robot-project/rossem_ws/devel;/home/student/rospackages_ws/devel;/opt/ros/melodic'.split(';')
+>>>>>>> pose veranderd
         else:
             # don't consider any other prefix path than this one
             CMAKE_PREFIX_PATH = []

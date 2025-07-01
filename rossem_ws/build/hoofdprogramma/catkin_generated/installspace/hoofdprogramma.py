@@ -78,7 +78,18 @@ class Hoofdcontroller:
         self.transportband_pub.publish("START_CONTINUE")
         self.started = True
 
+<<<<<<< HEAD
     #aansturen action server manipulator 
+=======
+   def robot_status_callback(self, msg):
+    rospy.loginfo(f"robot_status_callback received: '{msg.data}'")
+    if msg.data.strip().upper() == "KLAAR_MET_SORTEREN":
+        rospy.loginfo("Robot klaar met sorteren -> transportband opnieuw starten")
+        self.transportband_pub.publish("START_CONTINUE")
+        self.started = True
+
+
+>>>>>>> pose veranderd
     def verzend_sorteer_goal_als_klaar(self):
         if not self.started:
             rospy.logwarn("Nog niet gestart, goal niet verzonden.")
